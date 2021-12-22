@@ -27,7 +27,7 @@ public class BuscarRatonController {
     
     private int continuar;
     
-    public BuscarRatonController(BuscarRatonModel model, Configuracion configuracion/*BuscarRatonView view*/){
+    public BuscarRatonController(BuscarRatonModel model, Configuracion configuracion){
         
         this.model = model;
         this.configuracion = configuracion;

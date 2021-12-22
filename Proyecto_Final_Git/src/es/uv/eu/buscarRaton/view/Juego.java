@@ -12,11 +12,11 @@ import javax.swing.JButton;
  * @version 1.0 2021/11/25
  */
 public class Juego extends JFrame{
-        
+    
+    private MenuBar menu_bar;
     private PanelArribaDatos panel_datos;
     private PanelCentralTablero panel_tablero;
     private JButton salir;
-    private MenuBar menu_bar;
 
     
     /*
