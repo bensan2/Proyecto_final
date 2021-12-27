@@ -176,8 +176,11 @@ public class BuscarRatonController {
                         "   Kevin Daniel Baguian Nsue" + "\n") ;
                 break;
                 
+                // Tablero panel central
                 case "Matriz":
                     System.out.println("BuscarRatonController : Boton Matriz.");
+                break;
+                
              }
         }
     }
