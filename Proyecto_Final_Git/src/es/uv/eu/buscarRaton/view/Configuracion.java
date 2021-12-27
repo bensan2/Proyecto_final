@@ -124,6 +124,7 @@ public class Configuracion extends JFrame {
     
  /**
  GET DE LAS FUNCIONES   
+     * @return 
  */
     public String getNombre(){
         return txtJugador.getText();
@@ -159,10 +160,7 @@ public class Configuracion extends JFrame {
     
     public boolean getAsistente(){
         boolean aux_asistente;
-        if (asistente.getSelectedItem().toString() == "Si")
-            aux_asistente = true;
-        else
-            aux_asistente = false;
+        aux_asistente = "Si".equals(asistente.getSelectedItem().toString());
         return aux_asistente;
     }
     
@@ -221,6 +219,7 @@ if (a == "" || aux == "a"){
     
     /**
     *   ACTION LISTENERS
+     * @param actionListener
     */ 
     public void setActionListener(ActionListener actionListener){
             bcerrar.addActionListener(actionListener);

@@ -40,7 +40,7 @@ public class Juego extends JFrame{
         panel_tablero = new PanelCentralTablero(model);
         // Anyade el boton salir como indica la practica
         salir = new JButton("Salir");
-        salir.setActionCommand("buttonSalir");
+        salir.setActionCommand("Salir");
 
         // Agrega los paneles al BorderLayout
         add(panel_datos, BorderLayout.NORTH);

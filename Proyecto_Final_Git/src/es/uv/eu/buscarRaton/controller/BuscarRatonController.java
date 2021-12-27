@@ -4,7 +4,6 @@ import es.uv.eu.buscarRaton.model.BuscarRatonModel;
 import es.uv.eu.buscarRaton.view.Configuracion;
 import es.uv.eu.buscarRaton.view.Juego;
 import es.uv.eu.buscarRaton.view.Ranking;
-import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -96,6 +95,18 @@ public class BuscarRatonController {
                         System.out.println("Datos correctos");
                     }
                 break;
+                //Salir una vez iniciado el juego
+                case "Salir": 
+                    System.out.println("BuscarRatonController : Boton salir.");
+                    continuar = JOptionPane.showConfirmDialog(null,
+                            "¿Estas seguro?." + "\n" +
+                            " Se borrara el progreso actual.",
+                    "Seleccione la opcion correcta",JOptionPane.YES_NO_OPTION);
+                    if (continuar == 0){
+                        System.exit(0);
+                    }
+
+                break;
                 
                 // Asistente
                 case "Activar_asistente":
@@ -118,7 +129,6 @@ public class BuscarRatonController {
                         // abrir ventana de configuracion
                         juego.dispose();
                         configuracion.setVisible(true);
-                        juego = new Juego(model);
                     }
                     System.out.println("Nueva_configuacion");
                 break;    

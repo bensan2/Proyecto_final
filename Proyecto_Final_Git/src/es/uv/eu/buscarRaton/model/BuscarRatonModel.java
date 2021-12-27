@@ -19,7 +19,7 @@ public class BuscarRatonModel {
     
 // Una clase tablero que tendria filas y columnas
     private int filas = 5, columnas = 5;
-    private boolean[][] celdas_raton; // Donde esta el raton localizado
+    private boolean celdas_raton; // Donde esta el raton localizado
     private boolean[][] celdas_tapadas; // todas empiezan en true
     private boolean[][] celdas_destapadas; // todas empiezan en false ///> cambiar boton a no poder pulsarlo para que no se poeda activar su action
     
@@ -183,4 +183,11 @@ WARRING CAMBIAR  a como se diseñe al final
     /*
     public void CalcularRanking (String nombre, int puntos_actuales)
     */
+
+    /**
+     * @return the celdas_raton
+     */
+    public boolean isCeldas_raton() {
+        return celdas_raton;
+    }
 }
