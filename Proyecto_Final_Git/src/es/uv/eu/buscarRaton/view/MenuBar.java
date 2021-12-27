@@ -32,9 +32,9 @@ public class MenuBar extends JMenuBar{
         configuracion = new JMenu("Configuracion");
         // Creamos los items dentro del menu configuracion y asignamos actioncommand
         nueva_configuracion = new JMenuItem("Nueva Configuracion");
-        nueva_configuracion.setActionCommand("Nueva_configuacion");
+        nueva_configuracion.setActionCommand("ItemNueva_configuacion");
         resetear_partida = new JMenuItem("Resetear partida");
-        resetear_partida.setActionCommand("Resetear");
+        resetear_partida.setActionCommand("ItemResetear");
         // Anyadimos los items al menu
         configuracion.add(nueva_configuracion);
         configuracion.add(resetear_partida);
@@ -43,21 +43,21 @@ public class MenuBar extends JMenuBar{
 
         ranking = new JMenu("Ranking");
         opcion_ranking = new JMenuItem("Ranking");
-        opcion_ranking.setActionCommand("Ranking");
+        opcion_ranking.setActionCommand("ItemRanking");
         ranking.add(opcion_ranking);
         this.add(ranking);
 
         accesibilidad = new JMenu("Accesibilidad");
         lupa = new JMenuItem("Lupa");
-        lupa.setActionCommand("Lupa");
+        lupa.setActionCommand("ItemLupa");
         accesibilidad.add(lupa);
         this.add(accesibilidad);
         
         ayuda = new JMenu("Ayuda");
         manual = new JMenuItem("Manual de juego");
-        manual.setActionCommand("Manual");
+        manual.setActionCommand("ItemManual");
         acercaDe = new JMenuItem("Acerca de...");
-        acercaDe.setActionCommand("AcercaDe");
+        acercaDe.setActionCommand("ItemAcercaDe");
         ayuda.add(manual);
         ayuda.add(acercaDe);
         this.add(ayuda);

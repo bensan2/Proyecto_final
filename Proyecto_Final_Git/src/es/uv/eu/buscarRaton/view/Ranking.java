@@ -49,8 +49,6 @@ public class Ranking extends JFrame{
         
         // Fija el tamaño de la ventana
         setSize(300,300);
-        // Visualiza la ventana
-        setVisible(true);
         // No puede cambiar de tamaño
         setResizable(true);
         // Cerrar con el boton x de la ventana

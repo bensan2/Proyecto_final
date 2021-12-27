@@ -1,6 +1,7 @@
 package es.uv.eu.buscarRaton.view;
 
 import es.uv.eu.buscarRaton.model.BuscarRatonModel;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -26,6 +27,7 @@ public class PanelCentralTablero extends JPanel{
            
             filas = model.getFilas();
             columnas = model.getColumnas();
+            this.setBackground(model.getColorFondo());
             
             this.setLayout(new GridLayout(filas,columnas));
             
@@ -34,6 +36,10 @@ public class PanelCentralTablero extends JPanel{
             for(int x= 0; x < filas; x++){
                 for (int y = 0; y < columnas; y++){
                     tablero[x][y] = new JButton(""+contador_temp);
+                    
+                    tablero[x][y].setBackground(model.getColorCelda());
+                    tablero[x][y].setContentAreaFilled(false);
+                    tablero[x][y].setOpaque(true);
                     tablero[x][y].setActionCommand("Matriz");
                     add(tablero[x][y]);
                     contador_temp++;

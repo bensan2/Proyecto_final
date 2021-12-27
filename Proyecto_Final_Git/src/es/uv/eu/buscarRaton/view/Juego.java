@@ -34,12 +34,12 @@ public class Juego extends JFrame{
         this.setJMenuBar(menu_bar);
         
         // Anyade el panel con los datos actuales del jugador
-        panel_datos = new PanelArribaDatos();
+        panel_datos = new PanelArribaDatos(model);
         // Anyade el panel con las celdas tapadas y destapadas correspondientes
         panel_tablero = new PanelCentralTablero(model);
         // Anyade el boton salir como indica la practica
         salir = new JButton("Salir");
-        salir.setActionCommand("Salir");
+        salir.setActionCommand("buttonSalir");
 
         // Agrega los paneles al BorderLayout
         add(panel_datos, BorderLayout.NORTH);
@@ -58,6 +58,7 @@ public class Juego extends JFrame{
     
     /**
     *   ACTION LISTENERS
+     * @param actionListener
     */ 
     public void setActionListener(ActionListener actionListener){
         menu_bar.setActionListener(actionListener);

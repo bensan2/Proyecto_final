@@ -103,11 +103,11 @@ public class Configuracion extends JFrame {
         
         
         bcerrar = new JButton("CERRAR");
-        bcerrar.setActionCommand("Salir");
+        bcerrar.setActionCommand("buttonSalir");
         this.add(bcerrar);
         
         bempezar = new JButton("EMPEZAR");
-        bempezar.setActionCommand("Empezar");
+        bempezar.setActionCommand("buttonEmpezar");
         this.add(bempezar);
  
         

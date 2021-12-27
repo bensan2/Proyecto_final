@@ -71,6 +71,13 @@ GET Y SET DE LOS ATRIBUTOS
     public void setAsistente(boolean _asistente){
         asistente = _asistente;
     }
+    public void setFilas(int filas){
+        this.filas = filas;
+    }
+    
+    public void setColumnas (int columnas){
+        this.columnas = columnas ;
+    }
     
     public boolean getAsistente(){
         return asistente;
@@ -106,22 +113,15 @@ GET Y SET DE LOS ATRIBUTOS
     public void JuegoNuevo(String _nombre_jugador, String _raton, Color _color_celda,
             Color _color_fondo, boolean _asistente, int _filas, int _columnas){
  
-        nombre_jugador = _nombre_jugador;
-        raton = _raton;
-        color_celda = _color_celda;
-        color_fondo = _color_fondo;
-        asistente = _asistente;
-        filas = _filas;
-        columnas = _columnas;
-        puntos = filas + columnas;
+        this.nombre_jugador = _nombre_jugador;
+        this.raton = _raton;
+        this.color_celda = _color_celda;
+        this.color_fondo = _color_fondo;
+        this.asistente = _asistente;
+        this.filas = _filas;
+        this.columnas = _columnas;
+        this.puntos = filas + columnas;
         RatonPosicionAleatoria(raton);
-/*
-Falta crear el tablero
-        for (int i = 0, i<= filas, i++){
-            for (int j = 0, j<= columnas, j++){       
-            }
-        }
-*/
     }
     
 /**

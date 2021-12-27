@@ -32,12 +32,12 @@ public class BuscarRatonController {
         this.model = model;
         this.configuracion = configuracion;
         
-        juego = new Juego(model);
+        // juego = new Juego(model);
         ranking = new Ranking();
         
         configuracion.addWindowListener(new BuscarRatonControllerWindowListener());
         configuracion.setActionListener(new BuscarRatonControllerActionListener());
-        juego.addWindowListener(new BuscarRatonControllerWindowListener());
+        //juego.addWindowListener(new BuscarRatonControllerWindowListener());
         juego.setActionListener(new BuscarRatonControllerActionListener());
         ranking.addWindowListener(new BuscarRatonControllerWindowListener());
         ranking.setActionListener(new BuscarRatonControllerActionListener());
@@ -65,7 +65,7 @@ public class BuscarRatonController {
         public void actionPerformed(ActionEvent ae){
             String command = ae.getActionCommand();
              switch (command){
-                case "Salir": 
+                case "buttonSalir": 
                     System.out.println("BuscarRatonController : Boton salir.");
                     continuar = JOptionPane.showConfirmDialog(null,
                             "¿Estas seguro?." + "\n" +
@@ -78,7 +78,7 @@ public class BuscarRatonController {
                 break;
                 
                 // Juego nuevo
-                case "Empezar":
+                case "buttonEmpezar":
                     System.out.println("BuscarRatonController: Boton Empezar");
                     if (configuracion.DatosCorrectos() == true){
                         model.JuegoNuevo(configuracion.getNombre(), 
@@ -88,7 +88,9 @@ public class BuscarRatonController {
                         configuracion.getAsistente(), 
                         configuracion.getFilas(),
                         configuracion.getColumnas());
-                        // Cerrar ventana y abrir nueva ventana de juego
+                        // Cerrar ventana y abrir nueva ventana de juego 
+                        configuracion.dispose();
+                        juego = new Juego(model);
                         System.out.println("Datos correctos");
                     }
                 break;
@@ -105,18 +107,20 @@ public class BuscarRatonController {
                 
                 // MENU BAR
                 //Configuracion
-                case "Nueva_configuacion":
+                case "ItemNueva_configuacion":
                     continuar = JOptionPane.showConfirmDialog(null,
                             "¿Estas seguro?." + "\n" +
                             " Se borrara el progreso actual.",
                     "Seleccione la opcion correcta",JOptionPane.YES_NO_OPTION);
                     if (continuar == 0){
                         // abrir ventana de configuracion
+                        configuracion.setVisible(true);
+                        juego = new Juego(model);
                     }
                     System.out.println("Nueva_configuacion");
                 break;    
                 
-                case "Resetear":
+                case "ItemResetear":
                     continuar = JOptionPane.showConfirmDialog(null,
                             "¿Estas seguro?." + "\n" +
                             " Se borrara el progreso actual.",
@@ -127,12 +131,13 @@ public class BuscarRatonController {
                 break;
                 
                 //Ranking
-                case "Ranking":
-                    // Abrir ventana ranking 
+                case "ItemRanking":
+                    System.out.println( " BuscarRatonController : Menu ’Ranking ’. " );
+                    ranking.setVisible(true);
                 break;
                 
                 //Accesibilidad
-                case "Lupa":
+                case "ItemLupa":
                     try {
                         String cmd = new String();
                         cmd = "cmd /c c:/windows/system32/magnify.exe"; ///< La /c Indica -> Carries out the command specified by string and then terminates.
@@ -142,7 +147,7 @@ public class BuscarRatonController {
                 break;
                 
                 //Ayuda
-                case "Manual":
+                case "ItemManual":
                         try {
                             File path = new File ("archivos/manual.pdf");
                             Desktop.getDesktop().open(path);
@@ -151,7 +156,7 @@ public class BuscarRatonController {
                         }
                 break;
                 
-                case "AcercaDe":
+                case "ItemAcercaDe":
                         JOptionPane.showMessageDialog(null, 
                         "Programadores:" + "\n" +
                         "   Benjamin Sanchez Monreal" + "\n" +
