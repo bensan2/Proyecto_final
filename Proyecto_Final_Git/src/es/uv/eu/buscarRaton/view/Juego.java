@@ -3,6 +3,7 @@ package es.uv.eu.buscarRaton.view;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import es.uv.eu.buscarRaton.model.BuscarRatonModel;
+import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
@@ -12,7 +13,7 @@ import javax.swing.JButton;
  * @version 1.0 2021/11/25
  */
 public class Juego extends JFrame{
-    
+    private BuscarRatonModel model;
     private MenuBar menu_bar;
     private PanelArribaDatos panel_datos;
     private PanelCentralTablero panel_tablero;
@@ -23,9 +24,9 @@ public class Juego extends JFrame{
     * Constructor
     */
     public Juego(BuscarRatonModel model){
-        
+
         super("Busca al Raton");  
-        
+        this.model = model;
         // Definimos BorderLayour
         this.setLayout(new BorderLayout());
         
@@ -49,12 +50,12 @@ public class Juego extends JFrame{
         // Fija el tamaño de la ventana
         setSize(500,500);
         // Visualiza la ventana
-        setVisible(true);
+        // setVisible(true);
         // No puede cambiar de tamaño
         setResizable(true);
         // Cerrar con el boton x de la ventana
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
+    } 
     
     /**
     *   ACTION LISTENERS
