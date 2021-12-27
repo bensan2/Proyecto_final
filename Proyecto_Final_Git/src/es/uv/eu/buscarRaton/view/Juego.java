@@ -36,7 +36,7 @@ public class Juego extends JFrame{
         // Anyade el panel con los datos actuales del jugador
         panel_datos = new PanelArribaDatos();
         // Anyade el panel con las celdas tapadas y destapadas correspondientes
-        panel_tablero = new PanelCentralTablero();
+        panel_tablero = new PanelCentralTablero(model);
         // Anyade el boton salir como indica la practica
         salir = new JButton("Salir");
         salir.setActionCommand("Salir");
@@ -60,9 +60,9 @@ public class Juego extends JFrame{
     *   ACTION LISTENERS
     */ 
     public void setActionListener(ActionListener actionListener){
-        salir.addActionListener(actionListener);
         menu_bar.setActionListener(actionListener);
         panel_datos.setActionListener(actionListener);
-        
+        panel_tablero.setActionListener(actionListener);
+        salir.addActionListener(actionListener);
     }
 }

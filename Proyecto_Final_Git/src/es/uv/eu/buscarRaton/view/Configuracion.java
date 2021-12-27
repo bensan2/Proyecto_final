@@ -181,7 +181,17 @@ public class Configuracion extends JFrame {
                 datos_correctos = false;
             break;
         }
-    
+        
+        // Es un valor numerico
+        try{
+            Integer.parseInt(txtFilas.getText());
+            Integer.parseInt(txtColumnas.getText());            
+        } catch(NumberFormatException ex){
+            datos_correctos = false;
+             JOptionPane.showMessageDialog(null,"El valor de filas y columnas"
+                     + "a de ser numerico entre 2 al 50" );
+        }
+        
         // Minimo 2 maximo 50 para las filas y columnas
         if (getFilas()    < MIN || getFilas()    > MAX ||
             getColumnas() < MIN || getColumnas() > MAX) {

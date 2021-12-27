@@ -67,7 +67,14 @@ public class BuscarRatonController {
              switch (command){
                 case "Salir": 
                     System.out.println("BuscarRatonController : Boton salir.");
-                    System.exit(0);
+                    continuar = JOptionPane.showConfirmDialog(null,
+                            "¿Estas seguro?." + "\n" +
+                            " Se borrara el progreso actual.",
+                    "Seleccione la opcion correcta",JOptionPane.YES_NO_OPTION);
+                    if (continuar == 0){
+                        System.exit(0);
+                    }
+
                 break;
                 
                 // Juego nuevo
@@ -82,6 +89,7 @@ public class BuscarRatonController {
                         configuracion.getFilas(),
                         configuracion.getColumnas());
                         // Cerrar ventana y abrir nueva ventana de juego
+                        System.out.println("Datos correctos");
                     }
                 break;
                 
@@ -149,6 +157,9 @@ public class BuscarRatonController {
                         "   Benjamin Sanchez Monreal" + "\n" +
                         "   Kevin Daniel Baguian Nsue" + "\n") ;
                 break;
+                
+                case "Matriz":
+                    System.out.println("BuscarRatonController : Boton Matriz.");
              }
         }
     }

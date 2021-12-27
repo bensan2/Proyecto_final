@@ -9,16 +9,16 @@ import java.awt.Color;
  */
 public class BuscarRatonModel {
     
-    private String nombre_jugador;
-    private String raton;
+    private String nombre_jugador="Jugador1";
+    private String raton ="Raton1";
 // public icono raton;
-    private Color color_celda;
-    private Color color_fondo;
-    private int puntos;
-    private boolean asistente;
+    private Color color_celda = Color.YELLOW;
+    private Color color_fondo = Color.WHITE;
+    private int puntos = 100;
+    private boolean asistente = true;
     
 // Una clase tablero que tendria filas y columnas
-    private int filas, columnas;
+    private int filas = 5, columnas = 5;
     private boolean[][] celdas_raton; // Donde esta el raton localizado
     private boolean[][] celdas_tapadas; // todas empiezan en true
     private boolean[][] celdas_destapadas; // todas empiezan en false ///> cambiar boton a no poder pulsarlo para que no se poeda activar su action
@@ -114,6 +114,7 @@ GET Y SET DE LOS ATRIBUTOS
         filas = _filas;
         columnas = _columnas;
         puntos = filas + columnas;
+        RatonPosicionAleatoria(raton);
 /*
 Falta crear el tablero
         for (int i = 0, i<= filas, i++){
@@ -135,6 +136,11 @@ Falta crear el tablero
             puntos += -1;
         }
     }
+    
+    public void RatonPosicionAleatoria(String raton){
+        // posicion aleatoria del raton
+    }
+
     
 
     
