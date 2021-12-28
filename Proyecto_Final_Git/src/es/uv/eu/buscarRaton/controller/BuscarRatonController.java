@@ -11,6 +11,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -178,6 +180,10 @@ public class BuscarRatonController {
                 
                 // Tablero panel central
                 case "Matriz":
+                    JButton identif1 = (JButton) ae.getSource();
+                    String s1 = (String)identif1.getName();
+                    juego.repaintJuego(s1);
+                    System.out.println( " Controller : Lista1 " + s1); 
                     System.out.println("BuscarRatonController : Boton Matriz.");
                 break;
                 

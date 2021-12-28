@@ -189,7 +189,7 @@ public class Configuracion extends JFrame {
              JOptionPane.showMessageDialog(null,"El valor de filas y columnas"
                      + "a de ser numerico entre 2 al 50" );
         }
-        
+
         // Minimo 2 maximo 50 para las filas y columnas
         if (getFilas()    < MIN || getFilas()    > MAX ||
             getColumnas() < MIN || getColumnas() > MAX) {
@@ -206,13 +206,6 @@ public class Configuracion extends JFrame {
             datos_correctos = false;
         }
         
-// NO SE PORQUE NO FUNCIONA CON IF 
-/*
-String a = txtFilas.getText();
-if (a == "" || aux == "a"){
-            JOptionPane.showMessageDialog(null, "Campo fila vacio o caracter a" + "\n");
-        }
-*/   
         return datos_correctos;
     }
             

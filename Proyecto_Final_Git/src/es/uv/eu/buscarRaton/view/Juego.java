@@ -37,7 +37,7 @@ public class Juego extends JFrame{
         // Anyade el panel con los datos actuales del jugador
         panel_datos = new PanelArribaDatos(model);
         // Anyade el panel con las celdas tapadas y destapadas correspondientes
-        panel_tablero = new PanelCentralTablero(model);
+        panel_tablero = new PanelCentralTablero();
         // Anyade el boton salir como indica la practica
         salir = new JButton("Salir");
         salir.setActionCommand("Salir");
@@ -56,6 +56,14 @@ public class Juego extends JFrame{
         // Cerrar con el boton x de la ventana
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     } 
+    
+    /**
+     * Repaint de los elementos del juego
+     */
+    public void repaintJuego(String num_boton){
+        //panel_datos.setText(string_pulsado);
+        panel_tablero.setCambiarColorBoton(num_boton);
+    }
     
     /**
     *   ACTION LISTENERS
