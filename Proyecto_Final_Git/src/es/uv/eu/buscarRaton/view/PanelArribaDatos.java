@@ -77,11 +77,13 @@ public class PanelArribaDatos extends JPanel{
      * @param _puntos_actuales int de los pts actuales
     */
     public void setPuntosActuales(int _puntos_actuales){
-        
         lpts_actuales.setText(Integer.toString(_puntos_actuales));
     }
     public void setAsistente(Boolean _asistente){
         asistente = _asistente;
+        rAsistente_si.setSelected(_asistente);
+        rAsistente_no.setSelected(!_asistente);
+        
     }
     
     /**
