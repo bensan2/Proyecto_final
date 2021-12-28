@@ -135,18 +135,18 @@ public class Configuracion extends JFrame {
     }
     
     public Color getColorCelda(){
-        Color aux_color = null;
+        Color aux_color = Color.BLUE;
         for( int i = 0; i < colores_string.length; i++)
-            if(colores_string[i] == color_celda.getSelectedItem().toString())
-                aux_color = colores[i];
+            if(colores_string[i] == color_celda.getSelectedItem().toString()){
+                aux_color = colores[i];}
         return aux_color;
     }
     
     public Color getColorFondo(){
         Color aux_color = null;
         for( int i = 0; i < colores_string.length; i++)
-            if(colores_string[i] == color_fondo.getSelectedItem().toString())
-                aux_color = colores[i];
+            if(colores_string[i] == color_fondo.getSelectedItem().toString()){
+                aux_color = colores[i];}
         return aux_color;
     }
     

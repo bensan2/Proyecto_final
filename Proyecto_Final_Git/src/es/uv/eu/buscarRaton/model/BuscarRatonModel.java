@@ -124,6 +124,19 @@ GET Y SET DE LOS ATRIBUTOS
         this.puntos = filas + columnas;
         RatonPosicionAleatoria(raton);
         
+        
+        /* DEVUELVE EL COLOR CORRECTAMENTE
+System.out.println("JUEGO NUEVO");
+        System.out.println(nombre_jugador);
+        System.out.println(raton);
+        System.out.println(color_celda);
+        System.out.println(color_fondo);
+        System.out.println(asistente);
+        System.out.println(filas);
+        System.out.println(columnas);
+        System.out.println(puntos);
+*/
+        
         // Variables para guardar datos iniciales para reset
         pts_iniciales = this.puntos;
         asistente_inicial = this.asistente;

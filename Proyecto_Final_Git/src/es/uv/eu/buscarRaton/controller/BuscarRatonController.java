@@ -143,7 +143,9 @@ public class BuscarRatonController {
                     "Seleccione la opcion correcta",JOptionPane.YES_NO_OPTION);
                     if (continuar == 0){
                             model.Reset();
-                            juego.Reset(model.getPuntos(),model.getAsistente());
+                            juego.Reset(model.getPuntos(),
+                                        model.getAsistente(),
+                                        model.getColorCelda());
                     }
                 break;
                 
@@ -185,7 +187,7 @@ public class BuscarRatonController {
                     model.DescontarPuntos();
                     JButton identif1 = (JButton) ae.getSource();
                     String s1 = (String)identif1.getName();
-                    juego.repaintJuego(model.getPuntos(),s1);
+                    juego.repaintJuego(model.getPuntos(),s1,model.getColorFondo());
                     
                     // GAME OVER
                     if (model.getPuntos() <= 0){
@@ -197,7 +199,9 @@ public class BuscarRatonController {
                             // Si desea volver a jugar
                             if (continuar == 0){
                                 model.Reset();
-                                juego.Reset(model.getPuntos(),model.getAsistente());
+                                juego.Reset(model.getPuntos(),
+                                            model.getAsistente(),
+                                            model.getColorCelda());
                             }
                             else{
                                 System.exit(0);

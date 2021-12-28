@@ -16,9 +16,9 @@ public class PanelCentralTablero extends JPanel{
     
     private int filas, columnas;
     private JButton[][] tablero;
-    private int  raton;
-    private BuscarRatonModel model = new BuscarRatonModel();
-     
+    private String  raton;
+    private Color color_celda,color_fondo;
+    
     private int contador_temp = 0;
         
     /**
@@ -26,12 +26,15 @@ public class PanelCentralTablero extends JPanel{
     * @param model se necesita conocer las filas y columnas
     */
     
-    public PanelCentralTablero(){
+    public PanelCentralTablero(BuscarRatonModel model ){
            
         filas = model.getFilas();
         columnas = model.getColumnas();
-        raton = 1;
-        this.setBackground(model.getColorFondo());
+        color_celda = model.getColorCelda();
+        color_fondo = model.getColorFondo();
+        raton = model.getRaton();
+        
+        this.setBackground(color_fondo);
             
         this.setLayout(new GridLayout(filas,columnas));
             
@@ -43,7 +46,7 @@ public class PanelCentralTablero extends JPanel{
                 
                 // Proporciona nombre al boton en este caso numerico
                 tablero[x][y].setName(new StringBuilder().append(contador_temp).toString());
-                tablero[x][y].setBackground(model.getColorCelda());
+                tablero[x][y].setBackground(color_celda);
                 tablero[x][y].setContentAreaFilled(false);
                 tablero[x][y].setOpaque(true);
                 tablero[x][y].setActionCommand("Matriz");
@@ -63,15 +66,15 @@ public class PanelCentralTablero extends JPanel{
      * Cambia y desactiva el boton de la matriz 
      * @param _num_boton nombre del boton correspondiente a un numero id 
      */
-    public void setBotonPulsado(String _num_boton){
+    public void setBotonPulsado(String _num_boton, Color _color_fondo){
         
         // Recorre la matriz
         for(int x = 0; x < filas; x++){
             for (int y = 0; y < columnas; y++){
                     // .equals(nombre) compara como == pero de objetos
                     if (tablero[x][y].getName().equals(_num_boton)){
-                        // Cambia a color de fondo
-                        tablero[x][y].setBackground(model.getColorFondo());
+                        // Cambia a color de color_fondo
+                        tablero[x][y].setBackground(_color_fondo);
                         // Desactiva el boton
                         tablero[x][y].setEnabled(false);
                     }
@@ -79,11 +82,11 @@ public class PanelCentralTablero extends JPanel{
         }
     }
     
-    public void ReiniciarBotones(){
+    public void ReiniciarBotones(Color _color_celda){
         for(int x = 0; x < filas; x++){
             for (int y = 0; y < columnas; y++){
-                        // Cambia a color al color sin pulsar
-                        tablero[x][y].setBackground(model.getColorCelda());
+                        // Cambia a color de color_celda, color sin pulsar
+                        tablero[x][y].setBackground(_color_celda);
                         // Activa el boton
                         tablero[x][y].setEnabled(true);
                     }

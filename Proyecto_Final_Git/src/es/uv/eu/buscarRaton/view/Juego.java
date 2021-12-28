@@ -37,7 +37,7 @@ public class Juego extends JFrame{
         // Anyade el panel con los datos actuales del jugador
         panel_datos = new PanelArribaDatos(model);
         // Anyade el panel con las celdas tapadas y destapadas correspondientes
-        panel_tablero = new PanelCentralTablero();
+        panel_tablero = new PanelCentralTablero(model);
         // Anyade el boton salir como indica la practica
         salir = new JButton("Salir");
         salir.setActionCommand("Salir");
@@ -60,16 +60,16 @@ public class Juego extends JFrame{
     /**
      * Repaint de los elementos del juego
      */
-    public void repaintJuego(int pts, String num_boton){
+    public void repaintJuego(int pts, String num_boton, Color _color_fondo){
         //panel_datos.setText(string_pulsado);
         panel_datos.setPuntosActuales(pts);
-        panel_tablero.setBotonPulsado(num_boton);
+        panel_tablero.setBotonPulsado(num_boton,_color_fondo);
     }
     
-    public void Reset(int pts, boolean asistente){
+    public void Reset(int pts, boolean asistente, Color color_celda){
         panel_datos.setPuntosActuales(pts);
         panel_datos.setAsistente(asistente);
-        panel_tablero.ReiniciarBotones();
+        panel_tablero.ReiniciarBotones(color_celda);
     }
     
     /**
