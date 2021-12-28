@@ -60,9 +60,16 @@ public class Juego extends JFrame{
     /**
      * Repaint de los elementos del juego
      */
-    public void repaintJuego(String num_boton){
+    public void repaintJuego(int pts, String num_boton){
         //panel_datos.setText(string_pulsado);
-        panel_tablero.setCambiarColorBoton(num_boton);
+        panel_datos.setPuntosActuales(pts);
+        panel_tablero.setBotonPulsado(num_boton);
+    }
+    
+    public void Reset(int pts, boolean asistente){
+        panel_datos.setPuntosActuales(pts);
+        panel_datos.setAsistente(asistente);
+        panel_tablero.ReiniciarBotones();
     }
     
     /**

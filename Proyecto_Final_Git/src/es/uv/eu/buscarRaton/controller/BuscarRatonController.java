@@ -3,6 +3,7 @@ package es.uv.eu.buscarRaton.controller;
 import es.uv.eu.buscarRaton.model.BuscarRatonModel;
 import es.uv.eu.buscarRaton.view.Configuracion;
 import es.uv.eu.buscarRaton.view.Juego;
+import es.uv.eu.buscarRaton.view.PanelCentralTablero;
 import es.uv.eu.buscarRaton.view.Ranking;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
@@ -141,7 +142,8 @@ public class BuscarRatonController {
                             " Se borrara el progreso actual.",
                     "Seleccione la opcion correcta",JOptionPane.YES_NO_OPTION);
                     if (continuar == 0){
-                        // Restablecer pts y asistente inicial
+                            model.Reset();
+                            juego.Reset(model.getPuntos(),model.getAsistente());
                     }
                 break;
                 
@@ -180,13 +182,29 @@ public class BuscarRatonController {
                 
                 // Tablero panel central
                 case "Matriz":
+                    model.DescontarPuntos();
                     JButton identif1 = (JButton) ae.getSource();
                     String s1 = (String)identif1.getName();
-                    juego.repaintJuego(s1);
-                    model.DescontarPuntos();
+                    juego.repaintJuego(model.getPuntos(),s1);
+                    
+                    // GAME OVER
+                    if (model.getPuntos() <= 0){
+                            continuar = JOptionPane.showConfirmDialog(null,
+                            "GAME OVER" + "\n" +
+                            "¿Desea volver a intentarlo?",
+                            "Seleccione la opcion que desee", 
+                            JOptionPane.YES_NO_OPTION);
+                            // Si desea volver a jugar
+                            if (continuar == 0){
+                                model.Reset();
+                                juego.Reset(model.getPuntos(),model.getAsistente());
+                            }
+                            else{
+                                System.exit(0);
+                            }
+                    }
                     System.out.println("BuscarRatonController : Boton Matriz.");
                 break;
-                
              }
         }
     }

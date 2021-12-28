@@ -63,7 +63,7 @@ public class PanelArribaDatos extends JPanel{
 
     }
     
-    /**
+
     /*
     SETTERS
      * @param _asistente
@@ -75,11 +75,11 @@ public class PanelArribaDatos extends JPanel{
     /**
      * Asigna los puntos actuales, Cambia el tipo de int a String
      * @param _puntos_actuales int de los pts actuales
-     *
-    public void setPuntosActuales(int _puntos_actuales){
-        pts_actuales = Integer.toString(_puntos_actuales);
-    }
     */
+    public void setPuntosActuales(int _puntos_actuales){
+        
+        lpts_actuales.setText(Integer.toString(_puntos_actuales));
+    }
     public void setAsistente(Boolean _asistente){
         asistente = _asistente;
     }

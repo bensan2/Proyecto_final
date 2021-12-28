@@ -1,6 +1,7 @@
 package es.uv.eu.buscarRaton.model;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  * @author Kevin Daniel Baguian Nsue
@@ -139,6 +140,11 @@ GET Y SET DE LOS ATRIBUTOS
         else{
             puntos += -1;
         }
+    }
+    
+    public void Reset(){
+        puntos = pts_iniciales;
+        asistente = asistente_inicial;
     }
     
     public void RatonPosicionAleatoria(String raton){

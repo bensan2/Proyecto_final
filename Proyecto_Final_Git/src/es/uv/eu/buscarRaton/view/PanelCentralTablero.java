@@ -63,7 +63,7 @@ public class PanelCentralTablero extends JPanel{
      * Cambia y desactiva el boton de la matriz 
      * @param _num_boton nombre del boton correspondiente a un numero id 
      */
-    public void setCambiarColorBoton(String _num_boton){
+    public void setBotonPulsado(String _num_boton){
         
         // Recorre la matriz
         for(int x = 0; x < filas; x++){
@@ -77,6 +77,17 @@ public class PanelCentralTablero extends JPanel{
                     }
              }
         }
+    }
+    
+    public void ReiniciarBotones(){
+        for(int x = 0; x < filas; x++){
+            for (int y = 0; y < columnas; y++){
+                        // Cambia a color al color sin pulsar
+                        tablero[x][y].setBackground(model.getColorCelda());
+                        // Activa el boton
+                        tablero[x][y].setEnabled(true);
+                    }
+             }
     }
     
     /**
