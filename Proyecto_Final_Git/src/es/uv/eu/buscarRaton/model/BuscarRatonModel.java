@@ -122,6 +122,10 @@ GET Y SET DE LOS ATRIBUTOS
         this.columnas = _columnas;
         this.puntos = filas + columnas;
         RatonPosicionAleatoria(raton);
+        
+        // Variables para guardar datos iniciales para reset
+        pts_iniciales = this.puntos;
+        asistente_inicial = this.asistente;
     }
     
 /**

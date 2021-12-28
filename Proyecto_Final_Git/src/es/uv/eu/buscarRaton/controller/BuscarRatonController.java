@@ -183,7 +183,7 @@ public class BuscarRatonController {
                     JButton identif1 = (JButton) ae.getSource();
                     String s1 = (String)identif1.getName();
                     juego.repaintJuego(s1);
-                    System.out.println( " Controller : Lista1 " + s1); 
+                    model.DescontarPuntos();
                     System.out.println("BuscarRatonController : Boton Matriz.");
                 break;
                 
