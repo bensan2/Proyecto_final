@@ -64,12 +64,10 @@ public class PanelArribaDatos extends JPanel{
     }
     
 
-    /*
-    SETTERS
-     * @param _asistente
-    */
-    /* public void setNombreJugador(String _nombre_jugador){
-        nombre_jugador = _nombre_jugador;
+    
+
+    public void setNombreJugador(String _nombre_jugador){
+        lnombre_jugador.setText(_nombre_jugador);
     }
     
     /**

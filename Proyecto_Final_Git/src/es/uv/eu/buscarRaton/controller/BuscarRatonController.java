@@ -94,6 +94,10 @@ public class BuscarRatonController {
 
                         // Cerrar ventana y abrir nueva ventana de juego 
                         configuracion.dispose();
+                        juego.Reset(model.getNombreJugador(),
+                                    model.getPuntos(),
+                                    model.getAsistente(),
+                                    model.getColorCelda());
                         juego.setVisible(true);
                         System.out.println("Datos correctos");
                     }
@@ -143,7 +147,8 @@ public class BuscarRatonController {
                     "Seleccione la opcion correcta",JOptionPane.YES_NO_OPTION);
                     if (continuar == 0){
                             model.Reset();
-                            juego.Reset(model.getPuntos(),
+                            juego.Reset(model.getNombreJugador(),
+                                        model.getPuntos(),
                                         model.getAsistente(),
                                         model.getColorCelda());
                     }
@@ -199,7 +204,8 @@ public class BuscarRatonController {
                             // Si desea volver a jugar
                             if (continuar == 0){
                                 model.Reset();
-                                juego.Reset(model.getPuntos(),
+                                juego.Reset(model.getNombreJugador(),
+                                            model.getPuntos(),
                                             model.getAsistente(),
                                             model.getColorCelda());
                             }
