@@ -3,6 +3,7 @@ package es.uv.eu.buscarRaton.view;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import es.uv.eu.buscarRaton.model.BuscarRatonModel;
+import es.uv.eu.buscarRaton.model.Celdas;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -60,10 +61,11 @@ public class Juego extends JFrame{
     /**
      * Repaint de los elementos del juego
      */
-    public void repaintJuego(int pts, String num_boton, Color _color_fondo){
+    public void repaintJuego(int pts, Celdas celdas, int fila, int columna){
         //panel_datos.setText(string_pulsado);
         panel_datos.setPuntosActuales(pts);
-        panel_tablero.setBotonPulsado(num_boton,_color_fondo);
+        //panel_tablero.setBotonPulsado(num_boton,_color_fondo);
+        panel_tablero.selectCelda(fila,columna,celdas);
     }
     
     public void Reset(String _nombre, int pts, boolean asistente, Color color_celda,int filas, int columnas){

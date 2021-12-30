@@ -172,7 +172,7 @@ public class BuscarRatonController {
                     // INICIAR RANKING
                     // NO funcionan los botones porque no existen en el controlador hacer como arriba
                     ranking = new Ranking();
-                    BuscarRatonController controllerRanking = new BuscarRatonController();
+                    // BuscarRatonController controllerRanking = new BuscarRatonController();
                     break;
                 
                 //Accesibilidad
@@ -206,8 +206,14 @@ public class BuscarRatonController {
                 case "Matriz":
                     model.DescontarPuntos();
                     JButton identif1 = (JButton) ae.getSource();
-                    String s1 = (String)identif1.getName();
-                    juego.repaintJuego(model.getPuntos(),s1,model.getColorFondo());
+                    //String s1 = (String)identif1.getName();
+                    // Obtenemos las cordenadas, fila y columna.
+                    String [] coordenadas = identif1.getName().split(",");
+                    // Convertimos los datos String a int.
+                    int xfila = Integer.parseInt(coordenadas[0]);
+                    int xcol = Integer.parseInt(coordenadas[1]);
+                    
+                    juego.repaintJuego(model.getPuntos(), model.getCeldas()[xfila][xcol],xfila, xcol);
                     
                     // GAME OVER
                     if (model.getPuntos() <= 0){

@@ -3,7 +3,6 @@ package es.uv.eu.buscarRaton.controller;
 import es.uv.eu.buscarRaton.model.BuscarRatonModel;
 import es.uv.eu.buscarRaton.view.Configuracion;
 import es.uv.eu.buscarRaton.view.Juego;
-import es.uv.eu.buscarRaton.view.PanelCentralTablero;
 import es.uv.eu.buscarRaton.view.Ranking;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
@@ -13,7 +12,6 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -198,8 +196,14 @@ public class BuscarRatonControllerv1 {
                 case "Matriz":
                     model.DescontarPuntos();
                     JButton identif1 = (JButton) ae.getSource();
-                    String s1 = (String)identif1.getName();
-                    juego.repaintJuego(model.getPuntos(),s1,model.getColorFondo());
+                    //String s1 = (String)identif1.getName();
+                    // Obtenemos las cordenadas, fila y columna.
+                    String [] coordenadas = identif1.getName().split(",");
+                    // Convertimos los datos String a int.
+                    int xfila = Integer.parseInt(coordenadas[0]);
+                    int xcol = Integer.parseInt(coordenadas[1]);
+                    
+                    juego.repaintJuego(model.getPuntos(), model.getCeldas()[xfila][xcol],xfila, xcol);
                     
                     // GAME OVER
                     if (model.getPuntos() <= 0){

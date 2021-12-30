@@ -1,7 +1,8 @@
 package es.uv.eu.buscarRaton.model;
 
 import java.awt.Color;
-import javax.swing.JOptionPane;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author Kevin Daniel Baguian Nsue
@@ -15,11 +16,12 @@ public class BuscarRatonModel {
 // public icono raton;
     private Color color_celda = Color.YELLOW;
     private Color color_fondo = Color.WHITE;
-    private int puntos = 100;
+    private int puntos;
     private boolean asistente = true;
     
 // Una clase tablero que tendria filas y columnas
     private int filas = 50, columnas = 50;
+    private Celdas[][] celdas;
     private boolean celdas_raton; // Donde esta el raton localizado
     private boolean[][] celdas_tapadas; // todas empiezan en true
     private boolean[][] celdas_destapadas; // todas empiezan en false ///> cambiar boton a no poder pulsarlo para que no se poeda activar su action
@@ -37,6 +39,7 @@ public class BuscarRatonModel {
 /*
 GET Y SET DE LOS ATRIBUTOS 
 */
+    
     public void setNombreJugador(String _nombre_jugador){
         nombre_jugador = _nombre_jugador;
     }
@@ -122,8 +125,7 @@ GET Y SET DE LOS ATRIBUTOS
         this.filas = _filas;
         this.columnas = _columnas;
         this.puntos = filas + columnas;
-        RatonPosicionAleatoria(raton);
-        
+        initCeldas(filas,columnas);
         
         /* DEVUELVE EL COLOR CORRECTAMENTE
 System.out.println("JUEGO NUEVO");
@@ -147,7 +149,7 @@ System.out.println("JUEGO NUEVO");
  * la ayuda del asistente activo (-2 pts) o desactivado (-1pts)
  */
     public void DescontarPuntos(){
-        if (asistente == true){
+        if (asistente){
             puntos += -2;
         }  
         else{
@@ -156,14 +158,68 @@ System.out.println("JUEGO NUEVO");
     }
     
     public void Reset(){
-        puntos = pts_iniciales;
+        puntos = filas * columnas;
         asistente = asistente_inicial;
     }
     
-    public void RatonPosicionAleatoria(String raton){
-        // posicion aleatoria del raton
+    public void initCeldas( int filas, int columnas){
+        setCeldas(new Celdas[filas][columnas]);
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                getCeldas()[i][j] = new Celdas(i,j);        
+            }
+            
+        }
+        generarRaton(filas, columnas);
     }
-
+    
+    //Generar raton Random
+    private void generarRaton(int filas, int columnas){
+        int auxFila = (int) (Math.random() * filas);
+        int auxColumna = (int) (Math.random() * columnas);
+        getCeldas()[auxFila][auxColumna].setRaton(true);
+        Pistas(filas, columnas);
+        
+    }
+    
+    // Obtener celdas al rededor
+    private List<Celdas> obtenCeldas(int fila, int columna){
+        List<Celdas> listaCeldas = new LinkedList<>();
+        for (int i = 0; i < 10; i++) {
+            int auxFila = fila;
+            int auxColumna = columna;
+            switch(i){
+                case 0: auxFila--; break; //Arriba
+                case 1: auxFila--; break; //Arriba Derecha
+                case 2: auxColumna++; break; //Derecha
+                case 3: auxColumna++; auxFila++; break; //Derecha Abajo
+                case 4: auxFila++; break; //Abajo
+                case 5: auxColumna--; auxFila++;break; //Abajo Izquierda
+                case 6: auxColumna--; break; //Izquierda
+                case 7: auxColumna--; auxFila--; break; //Izquierda Arriba
+            }
+            if((auxFila >=0 && auxFila<this.getCeldas().length) 
+                    && auxColumna >=0 && auxColumna<this.getCeldas()[0].length){
+                listaCeldas.add(this.getCeldas()[auxFila][auxColumna]);
+        
+            }
+        }
+        
+        return listaCeldas;
+    }
+    
+    // Generar Pistas
+    private void Pistas(int filas, int columnas){
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < columnas; j++) {
+                if (getCeldas()[i][j].isRaton()){
+                    List<Celdas> celdasAlredeor = obtenCeldas(i,j);
+                    celdasAlredeor.forEach((c)-> c.increPistas());
+                    
+                }
+            }
+        }
+    }
     
 
     
@@ -212,5 +268,26 @@ WARRING CAMBIAR  a como se diseñe al final
      */
     public boolean isCeldas_raton() {
         return celdas_raton;
+    }
+
+    /**
+     * @param celdas_raton the celdas_raton to set
+     */
+    public void setCeldas_raton(boolean celdas_raton) {
+        this.celdas_raton = celdas_raton;
+    }
+
+    /**
+     * @return the celdas
+     */
+    public Celdas[][] getCeldas() {
+        return celdas;
+    }
+
+    /**
+     * @param celdas the celdas to set
+     */
+    public void setCeldas(Celdas[][] celdas) {
+        this.celdas = celdas;
     }
 }
