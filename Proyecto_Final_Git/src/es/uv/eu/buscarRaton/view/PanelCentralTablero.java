@@ -50,6 +50,7 @@ public class PanelCentralTablero extends JPanel{
                 tablero[x][y].setContentAreaFilled(false);
                 tablero[x][y].setOpaque(true);
                 tablero[x][y].setActionCommand("Matriz");
+                tablero[x][y].setVisible(true);
                 add(tablero[x][y]);
                 contador_temp++;
             }

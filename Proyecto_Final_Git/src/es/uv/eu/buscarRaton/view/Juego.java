@@ -50,7 +50,7 @@ public class Juego extends JFrame{
         // Fija el tamaño de la ventana
         setSize(500,500);
         // Visualiza la ventana
-        // setVisible(true);
+         setVisible(true);
         // No puede cambiar de tamaño
         setResizable(true);
         // Cerrar con el boton x de la ventana
@@ -66,7 +66,7 @@ public class Juego extends JFrame{
         panel_tablero.setBotonPulsado(num_boton,_color_fondo);
     }
     
-    public void Reset(String _nombre, int pts, boolean asistente, Color color_celda){
+    public void Reset(String _nombre, int pts, boolean asistente, Color color_celda,int filas, int columnas){
         panel_datos.setNombreJugador(_nombre);
         panel_datos.setPuntosActuales(pts);
         panel_datos.setAsistente(asistente);

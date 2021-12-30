@@ -20,9 +20,10 @@ public class BuscarRatonMain {
      */
     public static void main(String[] args) {
         BuscarRatonModel model = new BuscarRatonModel();
-        Configuracion configuracion_view = new Configuracion(model);
-        BuscarRatonController controller = new BuscarRatonController(model, configuracion_view);
+        Configuracion configuracion = new Configuracion();
+        //BuscarRatonView view = new BuscarRatonView();
+        BuscarRatonController controller = new BuscarRatonController(model, configuracion);
 
-        configuracion_view.setVisible(true);
+        configuracion.setVisible(true);
     }
 }

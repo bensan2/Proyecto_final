@@ -3,6 +3,7 @@ package es.uv.eu.buscarRaton.controller;
 import es.uv.eu.buscarRaton.model.BuscarRatonModel;
 import es.uv.eu.buscarRaton.view.Configuracion;
 import es.uv.eu.buscarRaton.view.Juego;
+import es.uv.eu.buscarRaton.view.PanelCentralTablero;
 import es.uv.eu.buscarRaton.view.Ranking;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
@@ -12,6 +13,7 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,53 +21,31 @@ import javax.swing.JOptionPane;
  * @author Benjamin Sanchez Monreal
  * @version 1.0 2021/12/09
  */
-public class BuscarRatonController {
+public class BuscarRatonControllerv1 {
     
     private BuscarRatonModel model;
+    private Configuracion configuracion;
     private Juego juego;
     private Ranking ranking;
-    //private BuscarRatonView view;
-    private Configuracion configuracion;
-
+    
     private int continuar;
     
-    /**
-     * Constructor de controller para configuracion
-     * @param model
-     * @param configuracion  
-     */
-    public BuscarRatonController(BuscarRatonModel model, Configuracion configuracion){
+    public BuscarRatonControllerv1(BuscarRatonModel model, Configuracion configuracion){
         
         this.model = model;
         this.configuracion = configuracion;
         
+        juego = new Juego(model);
+        ranking = new Ranking();
+        
         configuracion.addWindowListener(new BuscarRatonControllerWindowListener());
         configuracion.setActionListener(new BuscarRatonControllerActionListener());
-    }
-    
-    /**
-     * Constructor de controller para view del juego
-     * @param model
-     * @param view 
-     */
-        public BuscarRatonController(BuscarRatonModel model, Juego juego){
-        
-        this.model = model;
-        this.juego = juego;
-
         juego.addWindowListener(new BuscarRatonControllerWindowListener());
         juego.setActionListener(new BuscarRatonControllerActionListener());
-    }
-            
-     
-     /**
-     
-        public BuscarRatoncontrollerRanking(){
-
         ranking.addWindowListener(new BuscarRatonControllerWindowListener());
         ranking.setActionListener(new BuscarRatonControllerActionListener());
+        
     }
-    */
     
     /**
      * Clases empotradas
@@ -88,9 +68,7 @@ public class BuscarRatonController {
         public void actionPerformed(ActionEvent ae){
             String command = ae.getActionCommand();
              switch (command){
-                 
-                // Pregunta de seguridad antes de salir del juego 
-                case "Salir": 
+                case "buttonSalir": 
                     System.out.println("BuscarRatonController : Boton salir.");
                     continuar = JOptionPane.showConfirmDialog(null,
                             "¿Estas seguro?." + "\n" +
@@ -103,7 +81,7 @@ public class BuscarRatonController {
                 break;
                 
                 // Juego nuevo
-                case "Empezar":
+                case "buttonEmpezar":
                     System.out.println("BuscarRatonController: Boton Empezar");
                     if (configuracion.DatosCorrectos() == true){
                         model.JuegoNuevo(configuracion.getNombre(), 
@@ -113,15 +91,33 @@ public class BuscarRatonController {
                         configuracion.getAsistente(), 
                         configuracion.getFilas(),
                         configuracion.getColumnas());
-                        System.out.println("Datos correctos");
-                        
-                        // Cerramos la ventana de configuracion
+
+                        // Cerrar ventana y abrir nueva ventana de juego 
                         configuracion.dispose();
-                        // Iniciamos la ventana del juego
-                        juego = new Juego(model);
-                        // Iniciamos el constructor del controlador para el juego
-                        BuscarRatonController contr = new BuscarRatonController(model,juego);
+                        //juego.dispose();
+                        //juego = new Juego(model);
+                       // BuscarRatonController contr = new BuscarRatonController(model,configuracion);
+                        juego.Reset(model.getNombreJugador(),
+                                    model.getPuntos(),
+                                    model.getAsistente(),
+                                    model.getColorCelda(),
+                                    model.getFilas(),
+                                    model.getColumnas());
+                        juego.setVisible(true);
+                        System.out.println("Datos correctos");
                     }
+                break;
+                //Salir una vez iniciado el juego
+                case "Salir": 
+                    System.out.println("BuscarRatonController : Boton salir.");
+                    continuar = JOptionPane.showConfirmDialog(null,
+                            "¿Estas seguro?." + "\n" +
+                            " Se borrara el progreso actual.",
+                    "Seleccione la opcion correcta",JOptionPane.YES_NO_OPTION);
+                    if (continuar == 0){
+                        System.exit(0);
+                    }
+
                 break;
                 
                 // Asistente
@@ -168,12 +164,8 @@ public class BuscarRatonController {
                 //Ranking
                 case "ItemRanking":
                     System.out.println( " BuscarRatonController : Menu ’Ranking ’. " );
-                    // NO CERRAR JUEGO
-                    // INICIAR RANKING
-                    // NO funcionan los botones porque no existen en el controlador hacer como arriba
-                    ranking = new Ranking();
-                    BuscarRatonController controllerRanking = new BuscarRatonController();
-                    break;
+                    ranking.setVisible(true);
+                break;
                 
                 //Accesibilidad
                 case "ItemLupa":

@@ -41,7 +41,7 @@ public class Configuracion extends JFrame {
     /**
      * Constructor de configuracion
      */
-    public Configuracion(BuscarRatonModel model){
+    public Configuracion(){
         
         this.setTitle("Configuracion de partida");
         this.setLayout(new GridLayout(8,2));
@@ -103,11 +103,11 @@ public class Configuracion extends JFrame {
         
         
         bcerrar = new JButton("CERRAR");
-        bcerrar.setActionCommand("buttonSalir");
+        bcerrar.setActionCommand("Salir");
         this.add(bcerrar);
         
         bempezar = new JButton("EMPEZAR");
-        bempezar.setActionCommand("buttonEmpezar");
+        bempezar.setActionCommand("Empezar");
         this.add(bempezar);
  
         
