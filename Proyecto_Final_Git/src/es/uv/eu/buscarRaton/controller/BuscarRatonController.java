@@ -159,8 +159,7 @@ public class BuscarRatonController {
                     "Seleccione la opcion correcta",JOptionPane.YES_NO_OPTION);
                     if (continuar == 0){
                             model.Reset();
-                            juego.Reset(model.getNombreJugador(),
-                                        model.getPuntos(),
+                            juego.Reset(model.getPuntos(),
                                         model.getAsistente(),
                                         model.getColorCelda(),
                                         model.getFilas(),
@@ -228,8 +227,7 @@ public class BuscarRatonController {
                             // Si desea volver a jugar
                             if (continuar == 0){
                                 model.Reset();
-                                juego.Reset(model.getNombreJugador(),
-                                            model.getPuntos(),
+                                juego.Reset(model.getPuntos(),
                                             model.getAsistente(),
                                             model.getColorCelda(),
                                             model.getFilas(),

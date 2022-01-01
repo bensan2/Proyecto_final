@@ -18,7 +18,6 @@ public class PanelArribaDatos extends JPanel{
     
     private JLabel lNombre,lPts,lAsistente;
     private JLabel lnombre_jugador,lpts_actuales;
-    // private String nombre_jugador="UsuarioTem",pts_actuales="10"; // se saca del modelo,cambiarlo,es temporal
     
     private boolean asistente = new Boolean(true); // se saca del modelo,cambiarlo,es temporal
     
@@ -50,6 +49,7 @@ public class PanelArribaDatos extends JPanel{
         lAsistente = new JLabel("Asistente:", SwingConstants.CENTER);
         this.add(lAsistente);
         
+        asistente = model.getAsistente();
         rAsistente_si = new JRadioButton("Si",asistente);
         rAsistente_si.setActionCommand("Activar_asistente");
         rAsistente_no = new JRadioButton("No",!asistente);
@@ -60,10 +60,7 @@ public class PanelArribaDatos extends JPanel{
         gAsistente = new ButtonGroup();
         gAsistente.add(rAsistente_si);
         gAsistente.add(rAsistente_no);
-
     }
-    
-
     
 
     public void setNombreJugador(String _nombre_jugador){
@@ -77,11 +74,11 @@ public class PanelArribaDatos extends JPanel{
     public void setPuntosActuales(int _puntos_actuales){
         lpts_actuales.setText(Integer.toString(_puntos_actuales));
     }
+    
     public void setAsistente(Boolean _asistente){
         asistente = _asistente;
-        rAsistente_si.setSelected(_asistente);
-        rAsistente_no.setSelected(!_asistente);
-        
+        rAsistente_si.setSelected(asistente);
+        rAsistente_no.setSelected(!asistente);
     }
     
     /**

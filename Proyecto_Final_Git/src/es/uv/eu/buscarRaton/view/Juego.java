@@ -68,8 +68,7 @@ public class Juego extends JFrame{
         panel_tablero.selectCelda(fila,columna,celdas);
     }
     
-    public void Reset(String _nombre, int pts, boolean asistente, Color color_celda,int filas, int columnas){
-        panel_datos.setNombreJugador(_nombre);
+    public void Reset(int pts, boolean asistente, Color color_celda,int filas, int columnas){
         panel_datos.setPuntosActuales(pts);
         panel_datos.setAsistente(asistente);
         panel_tablero.ReiniciarBotones(color_celda);
