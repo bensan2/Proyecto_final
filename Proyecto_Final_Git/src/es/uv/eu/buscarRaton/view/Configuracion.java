@@ -122,10 +122,10 @@ public class Configuracion extends JFrame {
     }
        
     
- /**
- GET DE LAS FUNCIONES   
-     * @return 
- */
+    /**
+    * GET DE LAS FUNCIONES   
+    * @return 
+    */
     public String getNombre(){
         return txtJugador.getText();
     }
@@ -156,13 +156,15 @@ public class Configuracion extends JFrame {
         return aux_asistente;
     }
     
+    
+    
     public void setColorCelda(){
         color_celda = ventanaDeColores.showDialog(null, "Seleccione un Color", Color.GREEN);
         bColor_celda.setBackground(color_celda);
     }
     
     public void setColorFondo(){
-        color_fondo=ventanaDeColores.showDialog(null, "Seleccione un Color", Color.GRAY);
+        color_fondo = ventanaDeColores.showDialog(null, "Seleccione un Color", Color.GRAY);
         bColor_fondo.setBackground(color_fondo);
     }
     
@@ -213,8 +215,8 @@ public class Configuracion extends JFrame {
             
     
     /**
-    *   ACTION LISTENERS
-     * @param actionListener
+    *  ACTION LISTENERS
+    * @param actionListener
     */ 
     public void setActionListener(ActionListener actionListener){
             bcerrar.addActionListener(actionListener);
