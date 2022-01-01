@@ -56,16 +56,17 @@ public class BuscarRatonController {
         juego.addWindowListener(new BuscarRatonControllerWindowListener());
         juego.setActionListener(new BuscarRatonControllerActionListener());
     }
+  
+        // Ranking
+        public BuscarRatonController(BuscarRatonModel model, Ranking ranking, Juego juego){
             
-     
-     /**
-     
-        public BuscarRatoncontrollerRanking(){
+        this.model = model;
+        this.ranking = ranking;
+        this.juego = juego;
 
         ranking.addWindowListener(new BuscarRatonControllerWindowListener());
         ranking.setActionListener(new BuscarRatonControllerActionListener());
     }
-    */
     
     /**
      * Clases empotradas
@@ -159,23 +160,36 @@ public class BuscarRatonController {
                     "Seleccione la opcion correcta",JOptionPane.YES_NO_OPTION);
                     if (continuar == 0){
                             model.Reset();
-                            juego.Reset(model.getPuntos(),
-                                        model.getAsistente(),
-                                        model.getColorCelda(),
-                                        model.getFilas(),
-                                        model.getColumnas());
+                            juego.dispose(); // hace que no funcione
+                            // Iniciamos la ventana del juego
+                            juego = new Juego(model);
+                            // Iniciamos el constructor del controlador para el juego
+                            BuscarRatonController contr = new BuscarRatonController(model,juego);
                     }
                 break;
                 
                 //Ranking
                 case "ItemRanking":
                     System.out.println( " BuscarRatonController : Menu ’Ranking ’. " );
-                    // NO CERRAR JUEGO
-                    // INICIAR RANKING
-                    // NO funcionan los botones porque no existen en el controlador hacer como arriba
-                    ranking = new Ranking();
-                    // BuscarRatonController controllerRanking = new BuscarRatonController();
+                    ranking = new Ranking();                    
+                    BuscarRatonController contr = new BuscarRatonController(model,ranking,juego);
                     break;
+                
+                // Cierra ranking
+                case "Cerrar_Ranking":
+                    ranking.dispose();
+                break;
+                
+                // Resetea y cierra el ranking
+                case "Resetear":
+                    model.Reset();
+                    juego.dispose();
+                    // Iniciamos la ventana del juego
+                    juego = new Juego(model);
+                    // Iniciamos el constructor del controlador para el juego
+                    BuscarRatonController contr1 = new BuscarRatonController(model,juego);
+                    ranking.dispose();
+                break;
                 
                 //Accesibilidad
                 case "ItemLupa":

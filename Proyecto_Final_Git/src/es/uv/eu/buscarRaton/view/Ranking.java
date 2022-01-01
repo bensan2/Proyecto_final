@@ -40,11 +40,11 @@ public class Ranking extends JFrame{
         add(juego_nuevo);
         
         juego_configurar = new JButton("Configurar Juego Nuevo");
-        juego_configurar.setActionCommand("Nueva_configuacion");
+        juego_configurar.setActionCommand("ItemNueva_configuacion");
         add(juego_configurar);
         
         cerrar = new JButton("Cerrar");
-        cerrar.setActionCommand("Salir");
+        cerrar.setActionCommand("Cerrar_Ranking");
         add(cerrar);
         
         // Fija el tamaño de la ventana
