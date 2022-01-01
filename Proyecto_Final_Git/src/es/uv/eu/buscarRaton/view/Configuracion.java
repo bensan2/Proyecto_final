@@ -30,6 +30,7 @@ public class Configuracion extends JFrame {
         
     private JButton bColor_fondo,bColor_celda;
     private Color color_fondo, color_celda;
+    private Color color_inicial = Color.WHITE;
 
     private JComboBox raton;
     private String[] ratones = {"Raton1", "Raton2", "Raton3"};
@@ -91,7 +92,10 @@ public class Configuracion extends JFrame {
 
         bColor_celda = new JButton("Pulse aqui");
         bColor_celda.setActionCommand("ColorCelda");
+        color_celda = color_inicial;
+        bColor_celda.setBackground(color_inicial);
         this.add(bColor_celda);
+
         
         
         lColor_fondo = new JLabel("Color de fondo:", SwingConstants.CENTER);
@@ -99,7 +103,10 @@ public class Configuracion extends JFrame {
         
         bColor_fondo = new JButton("Pulse aqui");
         bColor_fondo.setActionCommand("ColorFondo");
+        color_fondo = color_inicial;
+        bColor_fondo.setBackground(color_inicial);
         this.add(bColor_fondo);
+
         
         
         bcerrar = new JButton("SALIR");
@@ -204,12 +211,12 @@ public class Configuracion extends JFrame {
         
         // Colores elegidos tienen que ser distintos
         if (getColorCelda().equals( getColorFondo() ) ){
-            JOptionPane.showMessageDialog(null,"El color de la Celda y " +
-                                               "el color del Fondo" +"\n" +
-                                               "Deben ser distintos" );
+            JOptionPane.showMessageDialog(null,"Seleccione:" + "\n" +
+                                               "Un color de celda y " +
+                                               "un color de Fondo "   + 
+                                               "Distintos" );
             datos_correctos = false;
         }
-        
         return datos_correctos;
     }
             

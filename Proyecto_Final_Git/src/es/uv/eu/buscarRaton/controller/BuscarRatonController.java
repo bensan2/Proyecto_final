@@ -234,25 +234,12 @@ public class BuscarRatonController {
                     
                     juego.repaintJuego(model.getPuntos(), model.getCeldas()[xfila][xcol],xfila, xcol);
                     
-                    // GAME OVER
+                    // GAME OVER Abrir ranking
                     if (model.getPuntos() <= 0){
-                            continuar = JOptionPane.showConfirmDialog(null,
-                            "GAME OVER" + "\n" +
-                            "¿Desea volver a intentarlo?",
-                            "Seleccione la opcion que desee", 
-                            JOptionPane.YES_NO_OPTION);
-                            // Si desea volver a jugar
-                            if (continuar == 0){
-                                model.Reset();
-                                juego.Reset(model.getPuntos(),
-                                            model.getAsistente(),
-                                            model.getColorCelda(),
-                                            model.getFilas(),
-                                            model.getColumnas());
-                            }
-                            else{
-                                System.exit(0);
-                            }
+                            System.out.println( "BuscarRatonController : MATRIZ ’Ranking ’. " );
+                            ranking = new Ranking();                    
+                            BuscarRatonController contr2 = new BuscarRatonController(model,ranking,juego);
+                            JOptionPane.showMessageDialog(null, "GAME OVER");
                     }
                     System.out.println("BuscarRatonController : Boton Matriz.");
                 break;
@@ -262,6 +249,7 @@ public class BuscarRatonController {
                     model.setAsistente(true);
                     System.out.println("Asistente activado");
                 break;
+                
                 case "Desactivar_asistente":
                     model.setAsistente(false);
                     System.out.println("Asistente desactivado");
