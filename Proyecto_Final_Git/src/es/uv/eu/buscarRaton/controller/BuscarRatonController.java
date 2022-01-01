@@ -144,7 +144,10 @@ public class BuscarRatonController {
                     if (continuar == 0){
                         // abrir ventana de configuracion
                         juego.dispose();
-                        configuracion.setVisible(true);
+                        Configuracion configuracion = new Configuracion();
+                        // Iniciamos el constructor del controlador para el configurador
+                        BuscarRatonController contr = new BuscarRatonController(model,configuracion);
+                        
                     }
                     System.out.println("Nueva_configuacion");
                 break;    
