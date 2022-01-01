@@ -4,6 +4,7 @@ import es.uv.eu.buscarRaton.model.BuscarRatonModel;
 import es.uv.eu.buscarRaton.view.Configuracion;
 import es.uv.eu.buscarRaton.view.Juego;
 import es.uv.eu.buscarRaton.view.Ranking;
+import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,6 +13,7 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JButton;
+import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -89,8 +91,8 @@ public class BuscarRatonController {
         public void actionPerformed(ActionEvent ae){
             String command = ae.getActionCommand();
              switch (command){
-                 
-                // Pregunta de seguridad antes de salir del juego 
+                                
+                // Pregunta de seguridad antes de salir del juego
                 case "Salir": 
                     System.out.println("BuscarRatonController : Boton salir.");
                     continuar = JOptionPane.showConfirmDialog(null,
@@ -100,7 +102,17 @@ public class BuscarRatonController {
                     if (continuar == 0){
                         System.exit(0);
                     }
-
+                break;
+                
+                // CONFIGURACION
+                case "ColorCelda":
+                    configuracion.setColorCelda();
+                    System.out.println(configuracion.getColorCelda());
+                break;
+                
+                case "ColorFondo":
+                    configuracion.setColorFondo();
+                    System.out.println(configuracion.getColorFondo());
                 break;
                 
                 // Juego nuevo
@@ -123,16 +135,6 @@ public class BuscarRatonController {
                         // Iniciamos el constructor del controlador para el juego
                         BuscarRatonController contr = new BuscarRatonController(model,juego);
                     }
-                break;
-                
-                // Asistente
-                case "Activar_asistente":
-                    model.setAsistente(true);
-                    System.out.println("Asistente activado");
-                break;
-                case "Desactivar_asistente":
-                    model.setAsistente(false);
-                    System.out.println("Asistente desactivado");
                 break;
                 
                 // MENU BAR
@@ -218,6 +220,7 @@ public class BuscarRatonController {
                         "   Kevin Daniel Baguian Nsue" + "\n") ;
                 break;
                 
+                // VIDEOJUEGO
                 // Tablero panel central
                 case "Matriz":
                     model.DescontarPuntos();
@@ -252,6 +255,16 @@ public class BuscarRatonController {
                             }
                     }
                     System.out.println("BuscarRatonController : Boton Matriz.");
+                break;
+                
+                // Asistente
+                case "Activar_asistente":
+                    model.setAsistente(true);
+                    System.out.println("Asistente activado");
+                break;
+                case "Desactivar_asistente":
+                    model.setAsistente(false);
+                    System.out.println("Asistente desactivado");
                 break;
              }
         }

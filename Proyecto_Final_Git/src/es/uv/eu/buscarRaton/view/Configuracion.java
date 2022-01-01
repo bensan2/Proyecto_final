@@ -7,8 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import es.uv.eu.buscarRaton.model.BuscarRatonModel;
 import java.awt.GridLayout;
+import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
@@ -28,15 +28,16 @@ public class Configuracion extends JFrame {
     private JLabel lNombre,lRaton,lColor_celda,lColor_fondo,lAsistente,lColumnas,lFilas;
     private JTextField txtJugador,txtFilas,txtColumnas;
         
-    private JComboBox color_celda , color_fondo;
-    private String[] colores_string = {"Amarillo", "Blanco", "Rojo", "Rosa", "Verde"};
-    private final Color[] colores = { Color.YELLOW,Color.WHITE, Color.RED, Color.PINK, Color.GREEN}; 
+    private JButton bColor_fondo,bColor_celda;
+    private Color color_fondo, color_celda;
 
     private JComboBox raton;
     private String[] ratones = {"Raton1", "Raton2", "Raton3"};
     
     private JComboBox asistente;
     private String[] asistente_respuestas = {"No", "Si"};
+    
+    JColorChooser ventanaDeColores;
     
     /**
      * Constructor de configuracion
@@ -64,18 +65,18 @@ public class Configuracion extends JFrame {
         
         lColor_celda = new JLabel("Color de celda:", SwingConstants.CENTER);
         this.add(lColor_celda);
-        
-        color_celda = new JComboBox(colores_string);
-        this.add(color_celda);
+
+        bColor_celda = new JButton("Pulse aqui");
+        bColor_celda.setActionCommand("ColorCelda");
+        this.add(bColor_celda);
         
         
         lColor_fondo = new JLabel("Color de fondo:", SwingConstants.CENTER);
         this.add(lColor_fondo);
         
-        color_fondo = new JComboBox(colores_string);
-        color_fondo.setSelectedIndex(2);
-        this.add(color_fondo);
-        
+        bColor_fondo = new JButton("Pulse aqui");
+        bColor_fondo.setActionCommand("ColorFondo");
+        this.add(bColor_fondo);
         
         lAsistente = new JLabel("Asistente:", SwingConstants.CENTER);
         this.add(lAsistente);
@@ -102,7 +103,7 @@ public class Configuracion extends JFrame {
         this.add(txtColumnas); 
         
         
-        bcerrar = new JButton("CERRAR");
+        bcerrar = new JButton("SALIR");
         bcerrar.setActionCommand("Salir");
         this.add(bcerrar);
         
@@ -135,19 +136,11 @@ public class Configuracion extends JFrame {
     }
     
     public Color getColorCelda(){
-        Color aux_color = Color.BLUE;
-        for( int i = 0; i < colores_string.length; i++)
-            if(colores_string[i] == color_celda.getSelectedItem().toString()){
-                aux_color = colores[i];}
-        return aux_color;
+        return color_celda;
     }
     
     public Color getColorFondo(){
-        Color aux_color = null;
-        for( int i = 0; i < colores_string.length; i++)
-            if(colores_string[i] == color_fondo.getSelectedItem().toString()){
-                aux_color = colores[i];}
-        return aux_color;
+        return color_fondo;
     }
     
      public int getFilas(){
@@ -162,6 +155,16 @@ public class Configuracion extends JFrame {
         boolean aux_asistente;
         aux_asistente = "Si".equals(asistente.getSelectedItem().toString());
         return aux_asistente;
+    }
+    
+    public void setColorCelda(){
+        color_celda = ventanaDeColores.showDialog(null, "Seleccione un Color", Color.gray);
+        bColor_celda.setBackground(color_celda);
+    }
+    
+    public void setColorFondo(){
+        color_fondo=ventanaDeColores.showDialog(null, "Seleccione un Color", Color.gray);
+        bColor_fondo.setBackground(color_fondo);
     }
     
     /**
@@ -199,7 +202,7 @@ public class Configuracion extends JFrame {
         }
         
         // Colores elegidos tienen que ser distintos
-        if (getColorCelda() == getColorFondo()){
+        if (getColorCelda().equals( getColorFondo() ) ){
             JOptionPane.showMessageDialog(null,"El color de la Celda y " +
                                                "el color del Fondo" +"\n" +
                                                "Deben ser distintos" );
@@ -217,5 +220,7 @@ public class Configuracion extends JFrame {
     public void setActionListener(ActionListener actionListener){
             bcerrar.addActionListener(actionListener);
             bempezar.addActionListener(actionListener);
+            bColor_celda.addActionListener(actionListener);
+            bColor_fondo.addActionListener(actionListener);
     }
 }
