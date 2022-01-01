@@ -55,8 +55,31 @@ public class Configuracion extends JFrame {
         txtJugador.setBounds(1,1,1,1);
         this.add(txtJugador);    
         
-    
-        lRaton = new JLabel("Raton:", SwingConstants.CENTER);
+        
+        lFilas = new JLabel("Filas:", SwingConstants.CENTER);
+        this.add(lFilas);
+        
+        txtFilas = new JTextField("2",2);
+        txtFilas.setSize(5,5);
+        txtFilas.setBounds(1,1,1,1);
+        this.add(txtFilas); 
+        
+        
+        lColumnas = new JLabel("Columnas:", SwingConstants.CENTER);
+        this.add(lColumnas);
+        
+        txtColumnas = new JTextField("2",2);
+        txtColumnas.setSize(5,5);
+        txtColumnas.setBounds(1,1,1,1);
+        this.add(txtColumnas); 
+        
+        lAsistente = new JLabel("Asistente:", SwingConstants.CENTER);
+        this.add(lAsistente);
+        
+        asistente = new JComboBox(asistente_respuestas);
+        this.add(asistente);
+        
+                lRaton = new JLabel("Raton:", SwingConstants.CENTER);
         this.add(lRaton);
         
         raton = new JComboBox(ratones);
@@ -77,30 +100,6 @@ public class Configuracion extends JFrame {
         bColor_fondo = new JButton("Pulse aqui");
         bColor_fondo.setActionCommand("ColorFondo");
         this.add(bColor_fondo);
-        
-        lAsistente = new JLabel("Asistente:", SwingConstants.CENTER);
-        this.add(lAsistente);
-        
-        asistente = new JComboBox(asistente_respuestas);
-        this.add(asistente);
-        
-        
-        lFilas = new JLabel("Filas:", SwingConstants.CENTER);
-        this.add(lFilas);
-        
-        txtFilas = new JTextField("2",2);
-        txtFilas.setSize(5,5);
-        txtFilas.setBounds(1,1,1,1);
-        this.add(txtFilas); 
-        
-        
-        lColumnas = new JLabel("Columnas:", SwingConstants.CENTER);
-        this.add(lColumnas);
-        
-        txtColumnas = new JTextField("2",2);
-        txtColumnas.setSize(5,5);
-        txtColumnas.setBounds(1,1,1,1);
-        this.add(txtColumnas); 
         
         
         bcerrar = new JButton("SALIR");
@@ -158,12 +157,12 @@ public class Configuracion extends JFrame {
     }
     
     public void setColorCelda(){
-        color_celda = ventanaDeColores.showDialog(null, "Seleccione un Color", Color.gray);
+        color_celda = ventanaDeColores.showDialog(null, "Seleccione un Color", Color.GREEN);
         bColor_celda.setBackground(color_celda);
     }
     
     public void setColorFondo(){
-        color_fondo=ventanaDeColores.showDialog(null, "Seleccione un Color", Color.gray);
+        color_fondo=ventanaDeColores.showDialog(null, "Seleccione un Color", Color.GRAY);
         bColor_fondo.setBackground(color_fondo);
     }
     
