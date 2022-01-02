@@ -1,8 +1,12 @@
 package es.uv.eu.buscarRaton.model;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.FileWriter;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * @author Kevin Daniel Baguian Nsue
@@ -34,6 +38,9 @@ public class BuscarRatonModel {
     // auxiliares para guardar datos iniciales
     private int pts_iniciales;
     private boolean asistente_inicial;
+    
+    private ArrayList<Jugador> jugadores;
+
     
     
 /*
@@ -209,11 +216,69 @@ GET Y SET DE LOS ATRIBUTOS
         }
     }
     
+       /*** Graba las partidas del ArrayList a Fichero. ***/    
+    public void GuardarPartida(){
 
+                // Grabar a Fichero
+        	String linea;
+		FileWriter fichero = null;
+		try {
+			fichero = new FileWriter("archivos/historico.txt");
+			// Escribimos linea a linea en el fichero
+			for (int i=0;i<jugadores.size();i++) {
+                                linea=jugadores.get(i).getNombre();
+				fichero.write(linea+"\r\n");
+                                linea=String.valueOf(jugadores.get(i).getPts());
+				fichero.write(linea+"\r\n");
+                                linea=String.valueOf(jugadores.get(i).getPts());
+				fichero.write(linea+"\r\n");                           
+			}
+			fichero.close();
+		} catch (Exception ex) {
+			System.out.println("No puedo guardar: " + ex.getMessage());
+		}
+    }
     
-    
-    
-    
+    /*** Lee las partidas del Archivo y las pasa al ArrayList. ***/
+    public void LeerPartidas(){
+        // Fichero del que queremos leer
+                int i = 1;
+                String nom_historico ="";int pts_historico = 0;
+		File fichero = new File("archivos/historico.txt");
+		Scanner s = null;
+                Jugador j = new Jugador("",0);
+		try {
+			// Leemos el contenido del fichero
+			s = new Scanner(fichero);
+
+			// Leemos linea a linea el fichero
+			while (s.hasNextLine()) {
+                            if (i==1)
+                            {nom_historico = s.nextLine(); 	
+                             i=2;}
+                            else
+                                if (i==2){
+                                    pts_historico = Integer.parseInt(s.nextLine()); 	
+                                    i=3;
+                                }
+                                else {
+                                    jugadores.add(new Jugador(nom_historico,pts_historico));
+                                    i=1;
+                                }
+			}
+
+		} catch (Exception ex) {
+			System.out.println("No leo archivo: " + ex.getMessage());
+		} finally {
+			// Cerramos el fichero tanto si la lectura ha sido correcta o no
+			try {
+				if (s != null)
+					s.close();
+			} catch (Exception ex2) {
+				System.out.println("No cierro archivo: " + ex2.getMessage());
+			}
+		}
+    }
     
 /*
 WARRING CAMBIAR  a como se diseñe al final   
