@@ -5,7 +5,10 @@ import javax.swing.JFrame;
 import es.uv.eu.buscarRaton.model.BuscarRatonModel;
 import es.uv.eu.buscarRaton.model.Celdas;
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -47,6 +50,11 @@ public class Juego extends JFrame{
         add(panel_datos, BorderLayout.NORTH);
         add(panel_tablero, BorderLayout.CENTER);
         add(salir,BorderLayout.SOUTH);
+        
+        // Icono del Jframe y minimizado
+        Image img = Toolkit.getDefaultToolkit().getImage("archivos/Icono.png");
+        ImageIcon imgicon=new ImageIcon(img);
+        this.setIconImage(img);
         
         // Fija el tamaño de la ventana
         setSize(500,500);

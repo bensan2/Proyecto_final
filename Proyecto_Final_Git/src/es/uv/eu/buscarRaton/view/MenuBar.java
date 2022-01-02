@@ -1,6 +1,7 @@
 package es.uv.eu.buscarRaton.view;
 
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -31,9 +32,9 @@ public class MenuBar extends JMenuBar{
         // Crea el menu de configuracion
         configuracion = new JMenu("Configuracion");
         // Creamos los items dentro del menu configuracion y asignamos actioncommand
-        nueva_configuracion = new JMenuItem("Nueva Configuracion");
+        nueva_configuracion = new JMenuItem("Nueva Configuracion",new ImageIcon("archivos/configuracion.png"));
         nueva_configuracion.setActionCommand("ItemNueva_configuacion");
-        resetear_partida = new JMenuItem("Resetear partida");
+        resetear_partida = new JMenuItem("Resetear partida",new ImageIcon("archivos/reset.png"));
         resetear_partida.setActionCommand("ItemResetear");
         // Anyadimos los items al menu
         configuracion.add(nueva_configuracion);
@@ -42,21 +43,21 @@ public class MenuBar extends JMenuBar{
         this.add(configuracion);
 
         ranking = new JMenu("Ranking");
-        opcion_ranking = new JMenuItem("Ranking");
+        opcion_ranking = new JMenuItem("Ranking",new ImageIcon("archivos/ranking.png"));
         opcion_ranking.setActionCommand("ItemRanking");
         ranking.add(opcion_ranking);
         this.add(ranking);
 
         accesibilidad = new JMenu("Accesibilidad");
-        lupa = new JMenuItem("Lupa");
+        lupa = new JMenuItem("Lupa",new ImageIcon("archivos/lupa.png"));
         lupa.setActionCommand("ItemLupa");
         accesibilidad.add(lupa);
         this.add(accesibilidad);
         
         ayuda = new JMenu("Ayuda");
-        manual = new JMenuItem("Manual de juego");
+        manual = new JMenuItem("Manual de juego",new ImageIcon("archivos/manual.png"));
         manual.setActionCommand("ItemManual");
-        acercaDe = new JMenuItem("Acerca de...");
+        acercaDe = new JMenuItem("Acerca de...",new ImageIcon("archivos/acercaDe.png"));
         acercaDe.setActionCommand("ItemAcercaDe");
         ayuda.add(manual);
         ayuda.add(acercaDe);

@@ -3,7 +3,10 @@ package es.uv.eu.buscarRaton.view;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
@@ -46,6 +49,12 @@ public class Ranking extends JFrame{
         cerrar = new JButton("Cerrar");
         cerrar.setActionCommand("Cerrar_Ranking");
         add(cerrar);
+        
+        
+        // Icono del Jframe y minimizado
+        Image img = Toolkit.getDefaultToolkit().getImage("archivos/Icono.png");
+        ImageIcon imgicon = new ImageIcon(img);
+        this.setIconImage(img);
         
         // Fija el tamaño de la ventana
         setSize(300,300);

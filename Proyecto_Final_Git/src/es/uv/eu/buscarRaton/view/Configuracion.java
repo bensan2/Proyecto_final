@@ -8,6 +8,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
 import javax.swing.JColorChooser;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -117,6 +120,11 @@ public class Configuracion extends JFrame {
         bempezar.setActionCommand("Empezar");
         this.add(bempezar);
  
+        
+        // Icono del Jframe y minimizado
+        Image img = Toolkit.getDefaultToolkit().getImage("archivos/Icono.png");
+        ImageIcon imgicon = new ImageIcon(img);
+        this.setIconImage(img);
         
         // Fija el tamaño de la ventana
         setSize(300,300);
