@@ -240,6 +240,7 @@ public class BuscarRatonController {
                         ranking = new Ranking(model);
                         BuscarRatonController contr2 = new BuscarRatonController(model,ranking,juego);
                         JOptionPane.showMessageDialog(null, "GAME OVER");
+                        juego.DesactivarTablero();
                     }else if(model.getCeldas()[xfila][xcol].isRaton()){
                         model.GuardarPartida();
                         model.LeerPartidas();
@@ -247,6 +248,7 @@ public class BuscarRatonController {
                         ranking = new Ranking(model);                    
                         BuscarRatonController contr2 = new BuscarRatonController(model,ranking,juego);
                         JOptionPane.showMessageDialog(null, "GAME WIN");
+                        juego.DesactivarTablero();
                     }
                     System.out.println("BuscarRatonController : Boton Matriz.");
                 break;

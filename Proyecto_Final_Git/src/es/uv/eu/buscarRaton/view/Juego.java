@@ -81,6 +81,10 @@ public class Juego extends JFrame{
         panel_tablero.ReiniciarBotones();
     }
     
+    public void DesactivarTablero(){
+        panel_tablero.DesactivarTablero();
+    }
+    
     /**
     *   ACTION LISTENERS
      * @param actionListener

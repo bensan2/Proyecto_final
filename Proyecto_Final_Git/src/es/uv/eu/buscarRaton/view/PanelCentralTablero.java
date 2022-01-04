@@ -97,6 +97,15 @@ public class PanelCentralTablero extends JPanel{
              }
     }
     
+    
+    public void DesactivarTablero(){
+        for(int x = 0; x < filas; x++){
+            for (int y = 0; y < columnas; y++){
+                tablero[x][y].setEnabled(false);
+            }
+        }
+    }
+    
     /**
     *   ACTION LISTENERS
     */ 
