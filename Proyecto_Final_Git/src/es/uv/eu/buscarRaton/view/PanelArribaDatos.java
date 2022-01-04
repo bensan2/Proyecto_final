@@ -50,9 +50,9 @@ public class PanelArribaDatos extends JPanel{
         this.add(lAsistente);
         
         asistente = model.getAsistente();
-        rAsistente_si = new JRadioButton("Si",asistente);
+        rAsistente_si = new JRadioButton("Si", isAsistente());
         rAsistente_si.setActionCommand("Activar_asistente");
-        rAsistente_no = new JRadioButton("No",!asistente);
+        rAsistente_no = new JRadioButton("No",!isAsistente());
         rAsistente_no.setActionCommand("Desactivar_asistente");
         this.add(rAsistente_si);
         this.add(rAsistente_no);
@@ -76,9 +76,9 @@ public class PanelArribaDatos extends JPanel{
     }
     
     public void setAsistente(Boolean _asistente){
-        asistente = _asistente;
-        rAsistente_si.setSelected(asistente);
-        rAsistente_no.setSelected(!asistente);
+        setAsistente((boolean) _asistente);
+        rAsistente_si.setSelected(isAsistente());
+        rAsistente_no.setSelected(!isAsistente());
     }
     
     /**
@@ -88,5 +88,12 @@ public class PanelArribaDatos extends JPanel{
     public void setActionListener(ActionListener actionListener){
         rAsistente_si.addActionListener(actionListener);
         rAsistente_no.addActionListener(actionListener);
+    }
+
+    /**
+     * @return the asistente
+     */
+    public boolean isAsistente() {
+        return asistente;
     }
 }

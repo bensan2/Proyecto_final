@@ -45,8 +45,13 @@ public class Jugador {
         this.pts = _pts;
     }
 
+    /**
+     *
+     * @return
+     */
+    @Override
     public String toString(){
-        return (nombre + "\t " + pts);
+        return nombre+"\t"+pts+"\n";
     }
 }
 

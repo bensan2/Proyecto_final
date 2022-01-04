@@ -19,8 +19,6 @@ public class PanelCentralTablero extends JPanel{
     private JButton[][] tablero;
     private String  raton;
     private Color color_celda,color_fondo;
-    
-    private int contador_temp = 0;
         
     /**
     * Contructor panel con una matriz de botones juego "Buscar Raton"
@@ -39,7 +37,10 @@ public class PanelCentralTablero extends JPanel{
             
         this.setLayout(new GridLayout(filas,columnas));
             
-        // Creacion del tablero matriz de botones
+        dibujarBotones(filas, columnas);  
+    }
+    // Creacion del tablero matriz de botones
+    private void dibujarBotones(int filas, int columnas){
         tablero = new JButton[filas][columnas];
         for(int x = 0; x < filas; x++){
             for (int y = 0; y < columnas; y++){
@@ -53,7 +54,7 @@ public class PanelCentralTablero extends JPanel{
                 tablero[x][y].setVisible(true);
                 add(tablero[x][y]);
             }
-        }           
+        }   
     }
     
     /**
@@ -61,45 +62,35 @@ public class PanelCentralTablero extends JPanel{
      */
     
     // Selecciona una celda
-    public void selectCelda(int fila, int columna, Celdas celdas){
+    public void selectCelda(int fila, int columna, Celdas celdas, boolean asistente){
         if(celdas.isRaton()){
             tablero[fila][columna].setBackground(color_fondo);
             tablero[fila][columna].setText(raton);
+            tablero[fila][columna].setForeground(Color.BLACK);
             tablero[fila][columna].setEnabled(false);
         }else{
             if(celdas.getPistas() == 0){
                 tablero[fila][columna].setBackground(color_fondo);
                 tablero[fila][columna].setText("");
                 tablero[fila][columna].setEnabled(false);
-            }else{
+            }else if(asistente){
+                
                 tablero[fila][columna].setBackground(color_fondo);
                 tablero[fila][columna].setText(celdas.getPistas()+"");
+                tablero[fila][columna].setEnabled(false);
+            }else {
+                tablero[fila][columna].setBackground(color_fondo);
+                tablero[fila][columna].setText("");
                 tablero[fila][columna].setEnabled(false);
             }
         }
     }
-    
-    public void setBotonPulsado(String _num_boton, Color _color_fondo){
-        
-        // Recorre la matriz
-        for(int x = 0; x < filas; x++){
-            for (int y = 0; y < columnas; y++){
-                    // .equals(nombre) compara como == pero de objetos
-                    if (tablero[x][y].getName().equals(_num_boton)){
-                        // Cambia a color de color_fondo
-                        tablero[x][y].setBackground(_color_fondo);
-                        // Desactiva el boton
-                        tablero[x][y].setEnabled(false);
-                    }
-             }
-        }
-    }
-    
-    public void ReiniciarBotones(Color _color_celda){
+
+    public void ReiniciarBotones(){
         for(int x = 0; x < filas; x++){
             for (int y = 0; y < columnas; y++){
                         // Cambia a color de color_celda, color sin pulsar
-                        tablero[x][y].setBackground(_color_celda);
+                        tablero[x][y].setBackground(color_celda);
                         // Activa el boton
                         tablero[x][y].setEnabled(true);
                     }

@@ -4,7 +4,6 @@ import es.uv.eu.buscarRaton.model.BuscarRatonModel;
 import es.uv.eu.buscarRaton.view.Configuracion;
 import es.uv.eu.buscarRaton.view.Juego;
 import es.uv.eu.buscarRaton.view.Ranking;
-import java.awt.Color;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +12,6 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.JButton;
-import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -147,6 +145,7 @@ public class BuscarRatonController {
                     if (continuar == 0){
                         // abrir ventana de configuracion
                         juego.dispose();
+                        ranking.dispose();
                         Configuracion configuracion = new Configuracion();
                         // Iniciamos el constructor del controlador para el configurador
                         BuscarRatonController contr = new BuscarRatonController(model,configuracion);
@@ -163,7 +162,7 @@ public class BuscarRatonController {
                     if (continuar == 0){
                             model.Reset();
                             juego.dispose(); // hace que no funcione
-                            // Iniciamos la ventana del juego
+                            // Iniciamos la ventana del  juego  
                             juego = new Juego(model);
                             // Iniciamos el constructor del controlador para el juego
                             BuscarRatonController contr = new BuscarRatonController(model,juego);
@@ -173,7 +172,8 @@ public class BuscarRatonController {
                 //Ranking
                 case "ItemRanking":
                     System.out.println( " BuscarRatonController : Menu ’Ranking ’. " );
-                    ranking = new Ranking();                    
+                    model.LeerPartidas();
+                    ranking = new Ranking(model);                    
                     BuscarRatonController contr = new BuscarRatonController(model,ranking,juego);
                     break;
                 
@@ -225,21 +225,28 @@ public class BuscarRatonController {
                 case "Matriz":
                     model.DescontarPuntos();
                     JButton identif1 = (JButton) ae.getSource();
-                    //String s1 = (String)identif1.getName();
-                    // Obtenemos las cordenadas, fila y columna.
                     String [] coordenadas = identif1.getName().split(",");
                     // Convertimos los datos String a int.
                     int xfila = Integer.parseInt(coordenadas[0]);
                     int xcol = Integer.parseInt(coordenadas[1]);
                     
-                    juego.repaintJuego(model.getPuntos(), model.getCeldas()[xfila][xcol],xfila, xcol);
+                    juego.repaintJuego(model.getPuntos(), model.getCeldas()[xfila][xcol],xfila, xcol, model.getAsistente());
                     
-                    // GAME OVER Abrir ranking
+                    // Gestion de Juego
                     if (model.getPuntos() <= 0){
-                            System.out.println( "BuscarRatonController : MATRIZ ’Ranking ’. " );
-                            ranking = new Ranking();                    
-                            BuscarRatonController contr2 = new BuscarRatonController(model,ranking,juego);
-                            JOptionPane.showMessageDialog(null, "GAME OVER");
+                        System.out.println( "BuscarRatonController : MATRIZ ’Ranking ’. " );
+                        model.GuardarPartida();
+                        model.LeerPartidas();
+                        ranking = new Ranking(model);
+                        BuscarRatonController contr2 = new BuscarRatonController(model,ranking,juego);
+                        JOptionPane.showMessageDialog(null, "GAME OVER");
+                    }else if(model.getCeldas()[xfila][xcol].isRaton()){
+                        model.GuardarPartida();
+                        model.LeerPartidas();
+                        System.out.println( "BuscarRatonController : MATRIZ ’Ranking ’. " );
+                        ranking = new Ranking(model);                    
+                        BuscarRatonController contr2 = new BuscarRatonController(model,ranking,juego);
+                        JOptionPane.showMessageDialog(null, "GAME WIN");
                     }
                     System.out.println("BuscarRatonController : Boton Matriz.");
                 break;

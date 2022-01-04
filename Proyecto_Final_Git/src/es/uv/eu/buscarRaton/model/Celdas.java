@@ -9,7 +9,6 @@ public class Celdas {
     private int filas;
     private int columnas;
     private boolean raton;
-    private boolean abierta;
     private int pistas;
     
     public Celdas(int filas, int columnas){
@@ -76,19 +75,6 @@ public class Celdas {
         this.pistas = pistas;
     }
 
-    /**
-     * @return the abierta
-     */
-    public boolean isAbierta() {
-        return abierta;
-    }
-
-    /**
-     * @param abierta the abierta to set
-     */
-    public void setAbierta(boolean abierta) {
-        this.abierta = abierta;
-    }
 
     
     

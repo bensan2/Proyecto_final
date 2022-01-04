@@ -69,17 +69,16 @@ public class Juego extends JFrame{
     /**
      * Repaint de los elementos del juego
      */
-    public void repaintJuego(int pts, Celdas celdas, int fila, int columna){
+    public void repaintJuego(int pts, Celdas celdas, int fila, int columna, boolean asistente){
         //panel_datos.setText(string_pulsado);
         panel_datos.setPuntosActuales(pts);
-        //panel_tablero.setBotonPulsado(num_boton,_color_fondo);
-        panel_tablero.selectCelda(fila,columna,celdas);
+        panel_tablero.selectCelda(fila,columna,celdas, asistente);
     }
     
     public void Reset(int pts, boolean asistente, Color color_celda,int filas, int columnas){
         panel_datos.setPuntosActuales(pts);
         panel_datos.setAsistente(asistente);
-        panel_tablero.ReiniciarBotones(color_celda);
+        panel_tablero.ReiniciarBotones();
     }
     
     /**
