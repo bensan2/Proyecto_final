@@ -2,6 +2,3 @@ USER_Default|1
 kevin|2
 Benjamin|17
 aaa|1
-bbb|3
-nUEVO|44
-USER_Default|3

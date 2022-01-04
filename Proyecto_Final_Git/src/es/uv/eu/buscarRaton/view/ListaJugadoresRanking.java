@@ -13,12 +13,12 @@ import javax.swing.JTextArea;
  * @author Benjamin Sanchez Monreal
  * @version 1.0 2021/12/09
  */
-public class ListaJugadores extends JPanel {
+public class ListaJugadoresRanking extends JPanel {
     private BuscarRatonModel model;
     private JTextArea textArea;
     private JScrollPane scroll;
     
-    public ListaJugadores( BuscarRatonModel model){
+    public ListaJugadoresRanking( BuscarRatonModel model){
         
         this. model = model;
         

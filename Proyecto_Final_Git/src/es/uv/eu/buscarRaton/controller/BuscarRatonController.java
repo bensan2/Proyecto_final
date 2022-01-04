@@ -105,12 +105,10 @@ public class BuscarRatonController {
                 // CONFIGURACION
                 case "ColorCelda":
                     configuracion.setColorCelda();
-                    System.out.println(configuracion.getColorCelda());
                 break;
                 
                 case "ColorFondo":
                     configuracion.setColorFondo();
-                    System.out.println(configuracion.getColorFondo());
                 break;
                 
                 // Juego nuevo
@@ -145,7 +143,6 @@ public class BuscarRatonController {
                     if (continuar == 0){
                         // abrir ventana de configuracion
                         juego.dispose();
-                        ranking.dispose();
                         Configuracion configuracion = new Configuracion();
                         // Iniciamos el constructor del controlador para el configurador
                         BuscarRatonController contr = new BuscarRatonController(model,configuracion);
@@ -234,7 +231,7 @@ public class BuscarRatonController {
                     
                     // Gestion de Juego
                     if (model.getPuntos() <= 0){
-                        System.out.println( "BuscarRatonController : MATRIZ ’Ranking ’. " );
+                        System.out.println( "BuscarRatonController : MATRIZ ’Ranking GAME OVER ’. " );
                         model.GuardarPartida();
                         model.LeerPartidas();
                         ranking = new Ranking(model);
@@ -244,7 +241,7 @@ public class BuscarRatonController {
                     }else if(model.getCeldas()[xfila][xcol].isRaton()){
                         model.GuardarPartida();
                         model.LeerPartidas();
-                        System.out.println( "BuscarRatonController : MATRIZ ’Ranking ’. " );
+                        System.out.println( "BuscarRatonController : MATRIZ ’Ranking GAME WIN’. " );
                         ranking = new Ranking(model);                    
                         BuscarRatonController contr2 = new BuscarRatonController(model,ranking,juego);
                         JOptionPane.showMessageDialog(null, "GAME WIN");

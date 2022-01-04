@@ -13,10 +13,10 @@ import javax.swing.JPanel;
  * @author Benjamin Sanchez Monreal
  * @version 1.0 2021/12/09
  */
-public class PanelNorte extends JPanel {
+public class PanelNorteRanking extends JPanel {
     private JLabel baraDatos;
     
-    public PanelNorte(){
+    public PanelNorteRanking(){
         baraDatos = new JLabel("\t#     \tNOMBRE    \tPUNTOS");
         add(baraDatos);
     }

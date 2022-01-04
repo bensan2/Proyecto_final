@@ -183,6 +183,7 @@ public class BuscarRatonModel {
                 jugadores.add(aux);
                 System.out.println("Leyendo los datos del Array de Jugadores: "+ jugadores.get(i).getNombre()+"\t"+jugadores.get(i).getPts());
                 i++;
+                toString();
             }
             entrada.close();
             System.out.println("Fichero Leeido");
@@ -332,7 +333,7 @@ WARRING CAMBIAR  a como se diseñe al final
     public String toString(){
         String resultado="";
         for (int i = 0; i < jugadores.size(); i++) {
-            System.out.println("Leyendo los datos del Array de Jugadores: "+ jugadores.get(i).getNombre()+"\t"+jugadores.get(i).getPts());
+            System.out.println("AAAAAAAAAAAAAA: "+ jugadores.get(i).getNombre()+"\t"+jugadores.get(i).getPts());
         }
         for (int i = 0; i < jugadores.size(); i++) {
             resultado=resultado+ "\t"+ (i+1) +"\t"+this.jugadores.get(i).toString();

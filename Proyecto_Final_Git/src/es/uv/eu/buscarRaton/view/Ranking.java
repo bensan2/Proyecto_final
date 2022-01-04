@@ -13,9 +13,9 @@ import javax.swing.JFrame;
  * @version 1.0 2021/12/09
  */
 public class Ranking extends JFrame{
-    private PanelSur botonesInferior;
-    private PanelNorte baraSuperior;
-    private ListaJugadores listaJugadores;
+    private ListaJugadoresRanking listaJugadores;
+    private PanelNorteRanking baraSuperior;
+    private PanelSurRanking botonesInferior;
     
     /**
      * Constructor de ranking 
@@ -25,11 +25,11 @@ public class Ranking extends JFrame{
         super("Ranking"); 
         
         //Botones Inferior
-        botonesInferior = new PanelSur();
-        listaJugadores = new ListaJugadores(model);
+        botonesInferior = new PanelSurRanking();
+        listaJugadores = new ListaJugadoresRanking(model);
         listaJugadores.mostrar();
         
-        baraSuperior = new PanelNorte();
+        baraSuperior = new PanelNorteRanking();
         // Icono del Jframe y minimizado
         Image img = Toolkit.getDefaultToolkit().getImage("archivos/Icono.png");
         ImageIcon imgicon = new ImageIcon(img);
