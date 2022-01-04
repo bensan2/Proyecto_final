@@ -18,13 +18,13 @@ import java.util.List;
  */
 public class BuscarRatonModel {
     
-    private String nombre_jugador="Jugador1";
-    private String raton ="Raton1";
+    private String nombre_jugador;
+    private String raton;
 // public icono raton;
-    private Color color_celda = Color.YELLOW;
-    private Color color_fondo = Color.WHITE;
+    private Color color_celda;
+    private Color color_fondo;
     private int puntos;
-    private boolean asistente = true;
+    private boolean asistente;
     
 // Una clase tablero que tendria filas y columnas
     private int filas, columnas;
@@ -36,7 +36,10 @@ public class BuscarRatonModel {
     // auxiliares para guardar datos iniciales
     private boolean asistente_inicial;
     
-    private ArrayList<Jugador> jugadores;
+    private ArrayList<Jugador> jugadores,jugadores2;
+    private ArrayList<String> nombres_jugadores;
+    private ArrayList<String> pts_jugadores;
+
     //private HashSet<Jugador> Jugadores;
 
  
@@ -167,8 +170,11 @@ public class BuscarRatonModel {
     
     /*** Lee las partidas del Archivo y las pasa al ArrayList. ***/
     public void LeerPartidas(){
-        this.jugadores = new ArrayList<>();
-        Jugador aux = new Jugador(getNombreJugador(),puntos );
+        this.jugadores = new ArrayList<Jugador>();
+        this.nombres_jugadores = new ArrayList<String>();
+        this.pts_jugadores = new ArrayList<String>();
+        
+        Jugador aux_jugador = new Jugador(getNombreJugador(),puntos );
         File fichero = new File("archivos\\historico.txt");
         try {
             BufferedReader entrada = new BufferedReader(new FileReader(fichero));
@@ -177,13 +183,27 @@ public class BuscarRatonModel {
             while((linea = entrada.readLine()) != null){
                 String datos[] = linea.split("\\|");
                 String auxNombre = datos[0];
-                int auxPuntos = Integer.parseInt(datos[1]);
-                aux.setNombre(auxNombre);
-                aux.setPts(auxPuntos);
-                jugadores.add(aux);
+                String auxPuntos = datos[1];
+                //int auxPuntos = Integer.parseInt(datos[1]);
+                aux_jugador.setNombre(auxNombre);
+                //aux_jugador.setPts(auxPuntos);
+                jugadores.add(aux_jugador);
+                                
+                nombres_jugadores.add(auxNombre);
+                pts_jugadores.add(auxPuntos);
+                
+                System.out.println(nombres_jugadores.get(i));
+                System.out.println(pts_jugadores.get(i));
+                
+                /*
+                // PARA COMPROBAR DATOS
                 System.out.println("Leyendo los datos del Array de Jugadores: "+ jugadores.get(i).getNombre()+"\t"+jugadores.get(i).getPts());
-                i++;
+                System.out.println("Jugador : "+ aux_jugador.getNombre()+"\t"+aux_jugador.getPts());
+                // SOLO MUESTRA EL ULTIMO , parece ser que rellena todo el ArrayList con el aux_jugador en vece añadirlo al final del arraylist
                 toString();
+                */
+                
+                i++;
             }
             entrada.close();
             System.out.println("Fichero Leeido");
@@ -332,13 +352,35 @@ WARRING CAMBIAR  a como se diseñe al final
     @Override
     public String toString(){
         String resultado="";
-        for (int i = 0; i < jugadores.size(); i++) {
-            System.out.println("AAAAAAAAAAAAAA: "+ jugadores.get(i).getNombre()+"\t"+jugadores.get(i).getPts());
+        String aux_nombre;
+        int aux_pts;
+        Jugador aux_jugador_toString = new Jugador("",0);
+        this.jugadores2 = new ArrayList<Jugador>();
+
+        
+        // Recoge los datos correctamente
+        for(int i = 0; i < nombres_jugadores.size(); i++){
+            //System.out.println("NOMBRE: " + nombres_jugadores.get(i) + "\t" +"PUNTOS: "+ pts_jugadores.get(i));
+            
+            aux_nombre = nombres_jugadores.get(i);
+            aux_pts = Integer.parseInt(pts_jugadores.get(i));
+            
+            aux_jugador_toString.setNombre(aux_nombre);
+            aux_jugador_toString.setPts(aux_pts);
+            
+            // No agrega al final de la cola , sustituye todo el ArrayList con este valor 
+            jugadores2.add(aux_jugador_toString);
         }
-        for (int i = 0; i < jugadores.size(); i++) {
-            resultado=resultado+ "\t"+ (i+1) +"\t"+this.jugadores.get(i).toString();
-            //System.out.println("Mostrando datos de la funcion toString del modelo "+ jugadores.get(i).getNombre()+ "\t"+ jugadores.get(i).getPts());
+        
+        // Ya que no podemos utilizar arraylist de jugadores, tendremos 2 arraylist relacionados de jugadores pts
+        for (int i = 0; i < nombres_jugadores.size(); i++) {
+            System.out.println("NOMBRE: " + nombres_jugadores.get(i) + "\t" +"PUNTOS: "+ pts_jugadores.get(i));
         }
+        for (int i = 0; i < nombres_jugadores.size(); i++) {
+            resultado = resultado+ "\t"+ (i+1) +"\t"+ nombres_jugadores.get(i) + "\t" + pts_jugadores.get(i) + "\n";
+            System.out.println("toStringNOMBRE: " + nombres_jugadores.get(i) + "\t" +"PUNTOS: "+ pts_jugadores.get(i));
+        }
+        
         return resultado; 
     }
     
