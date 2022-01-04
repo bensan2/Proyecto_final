@@ -64,6 +64,12 @@ public class Juego extends JFrame{
         setResizable(true);
         // Cerrar con el boton x de la ventana
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        // Centra la ventana en la pantalla
+        setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - 
+                            getSize().width) / 2, 
+                    (Toolkit.getDefaultToolkit().getScreenSize().height - 
+                            getSize().height) / 2);
     } 
     
     /**

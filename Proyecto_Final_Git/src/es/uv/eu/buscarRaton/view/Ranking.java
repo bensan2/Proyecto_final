@@ -14,7 +14,7 @@ import javax.swing.JFrame;
  */
 public class Ranking extends JFrame{
     private ListaJugadoresRanking listaJugadores;
-    private PanelNorteRanking baraSuperior;
+    //private PanelNorteRanking baraSuperior;
     private PanelSurRanking botonesInferior;
     
     /**
@@ -29,21 +29,23 @@ public class Ranking extends JFrame{
         listaJugadores = new ListaJugadoresRanking(model);
         listaJugadores.mostrar();
         
-        baraSuperior = new PanelNorteRanking();
+        //baraSuperior = new PanelNorteRanking();
         // Icono del Jframe y minimizado
         Image img = Toolkit.getDefaultToolkit().getImage("archivos/Icono.png");
         ImageIcon imgicon = new ImageIcon(img);
         this.setIconImage(img);
         
         //ANYADE TODOS LOS COMPONETES AL FRAME
-        this.add(baraSuperior, BorderLayout.NORTH);
+        //this.add(baraSuperior, BorderLayout.NORTH);
         this.add(listaJugadores,BorderLayout.CENTER);
         this.add(botonesInferior, BorderLayout.SOUTH);
         
         // Fija el tamaño de la ventana
-        setSize(500,300);
+        setSize(420,280);
         // Visualiza la ventana
         setVisible(true);
+        // No puede cambiar de tamaño
+        setResizable(false);
         // Cerrar con el boton x de la ventana
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }

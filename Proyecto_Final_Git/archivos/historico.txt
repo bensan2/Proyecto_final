@@ -3,3 +3,8 @@ Benjamin|4
 USER_Default|6
 USER_Default|3
 USER_Default|0
+USER_Default|1
+USER_Default|1
+USER_Default|0
+NuevoUser|2
+USER_Default|3

@@ -37,7 +37,8 @@ public class ListaJugadoresRanking extends JPanel {
     }
     
     public void mostrar(){
-        textArea.append(model.toString());
+        textArea.append("\t"+"Posicion" + "\t"+ "Jugador" + "\t"+"Puntos"+ "\n"+ 
+                        model.toString());
     }
     
 }
