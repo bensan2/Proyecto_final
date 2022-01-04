@@ -167,32 +167,23 @@ public class BuscarRatonModel {
     
     /*** Lee las partidas del Archivo y las pasa al ArrayList. ***/
     public void LeerPartidas(){
-        ArrayList<Jugador> auxJugadores = new ArrayList<>();
+        this.jugadores = new ArrayList<>();
         Jugador aux = new Jugador(getNombreJugador(),puntos );
         File fichero = new File("archivos\\historico.txt");
         try {
             BufferedReader entrada = new BufferedReader(new FileReader(fichero));
             String linea;
+            int i = 0;
             while((linea = entrada.readLine()) != null){
                 String datos[] = linea.split("\\|");
                 String auxNombre = datos[0];
                 int auxPuntos = Integer.parseInt(datos[1]);
-                System.out.println("Leyendo los datos: "+ auxNombre+"\t"+auxPuntos);
                 aux.setNombre(auxNombre);
                 aux.setPts(auxPuntos);
-                auxJugadores.add(aux);
+                jugadores.add(aux);
+                System.out.println("Leyendo los datos del Array de Jugadores: "+ jugadores.get(i).getNombre()+"\t"+jugadores.get(i).getPts());
+                i++;
             }
-            this.jugadores = (ArrayList) auxJugadores.clone();
-            
-            System.out.println("Tamaño de Aux Jugadores: "+ auxJugadores.size() +"\n");
-            System.out.println("Tamaño de Jugadores: "+ jugadores.size() +"\n");
-            
-            System.out.println("Mostrando ficheros que se encuentran en Aux Jugadores"+"\n");
-            System.out.println(auxJugadores.get(0)+"\n");
-            
-            System.out.println("Mostrando ficheros que se encuentran en Jugadores"+"\n");
-            System.out.println(jugadores.get(1)+"\n");
-            
             entrada.close();
             System.out.println("Fichero Leeido");
 	} catch (IOException ex) {
@@ -341,7 +332,11 @@ WARRING CAMBIAR  a como se diseñe al final
     public String toString(){
         String resultado="";
         for (int i = 0; i < jugadores.size(); i++) {
-            resultado=resultado+this.jugadores.get(i).toString()+"\n";
+            System.out.println("Leyendo los datos del Array de Jugadores: "+ jugadores.get(i).getNombre()+"\t"+jugadores.get(i).getPts());
+        }
+        for (int i = 0; i < jugadores.size(); i++) {
+            resultado=resultado+ "\t"+ (i+1) +"\t"+this.jugadores.get(i).toString();
+            //System.out.println("Mostrando datos de la funcion toString del modelo "+ jugadores.get(i).getNombre()+ "\t"+ jugadores.get(i).getPts());
         }
         return resultado; 
     }

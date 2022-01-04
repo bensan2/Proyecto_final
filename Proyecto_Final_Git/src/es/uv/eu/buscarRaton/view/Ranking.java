@@ -14,6 +14,7 @@ import javax.swing.JFrame;
  */
 public class Ranking extends JFrame{
     private PanelSur botonesInferior;
+    private PanelNorte baraSuperior;
     private ListaJugadores listaJugadores;
     
     /**
@@ -27,12 +28,15 @@ public class Ranking extends JFrame{
         botonesInferior = new PanelSur();
         listaJugadores = new ListaJugadores(model);
         listaJugadores.mostrar();
+        
+        baraSuperior = new PanelNorte();
         // Icono del Jframe y minimizado
         Image img = Toolkit.getDefaultToolkit().getImage("archivos/Icono.png");
         ImageIcon imgicon = new ImageIcon(img);
         this.setIconImage(img);
         
         //ANYADE TODOS LOS COMPONETES AL FRAME
+        this.add(baraSuperior, BorderLayout.NORTH);
         this.add(listaJugadores,BorderLayout.CENTER);
         this.add(botonesInferior, BorderLayout.SOUTH);
         
