@@ -5,6 +5,7 @@ import es.uv.eu.buscarRaton.model.Celdas;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -65,8 +66,7 @@ public class PanelCentralTablero extends JPanel{
     public void selectCelda(int fila, int columna, Celdas celdas, boolean asistente){
         if(celdas.isRaton()){
             tablero[fila][columna].setBackground(color_fondo);
-            tablero[fila][columna].setText(raton);
-            tablero[fila][columna].setForeground(Color.BLACK);
+            tablero[fila][columna].setIcon(new ImageIcon(raton));
             tablero[fila][columna].setEnabled(false);
         }else{
             if(celdas.getPistas() == 0){

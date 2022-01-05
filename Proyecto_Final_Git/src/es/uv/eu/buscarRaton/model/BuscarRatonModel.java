@@ -8,6 +8,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -40,8 +43,6 @@ public class BuscarRatonModel {
     private ArrayList<String> nombres_jugadores;
     private ArrayList<String> pts_jugadores;
 
-    //private HashSet<Jugador> Jugadores;
-
  
 /**
  * Contructor para una nueva partida
@@ -69,6 +70,7 @@ public class BuscarRatonModel {
         // Variables para guardar datos iniciales para reset
         asistente_inicial = this.asistente;
     }
+    
     
 /**
  * Descuenta los puntos actuales confome a cada jugada dependiendo si esta
@@ -289,6 +291,19 @@ WARRING CAMBIAR  a como se diseñe al final
     }
     
     public String getRaton(){
+        if (null != this.raton) switch (this.raton) {
+            case "Raton1":
+                raton = "archivos/ratonRedim1.jpg";
+                break;
+            case "Raton2":
+                raton = "archivos/Raton2.png";
+                break;
+            case "Raton3":
+                raton = "archivos/Raton3.png";
+                break;
+            default:
+                break;
+        }
         return raton;
     }
     
@@ -371,7 +386,6 @@ WARRING CAMBIAR  a como se diseñe al final
             // No agrega al final de la cola , sustituye todo el ArrayList con este valor 
             jugadores2.add(aux_jugador_toString);
         }
-        
         // Ya que no podemos utilizar arraylist de jugadores, tendremos 2 arraylist relacionados de jugadores pts
         for (int i = 0; i < nombres_jugadores.size(); i++) {
             System.out.println("NOMBRE: " + nombres_jugadores.get(i) + "\t" +"PUNTOS: "+ pts_jugadores.get(i));
