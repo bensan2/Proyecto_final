@@ -8,6 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -365,6 +367,7 @@ WARRING CAMBIAR  a como se diseñe al final
     public String MostrarJugadores(){
         
         String resultado="";
+        OrdenarRanking();
         for (int i = 0; i < jugadores.size(); i++) {
             resultado = resultado+ "\t"+ (i+1) +"\t"+ jugadores.get(i) + "\n";
             System.out.println("toStringNOMBRE: " + jugadores.get(i) + "\n");
@@ -373,4 +376,13 @@ WARRING CAMBIAR  a como se diseñe al final
         return resultado; 
     }
     
+        public void OrdenarRanking(){
+        Collections.sort(jugadores, new Comparator<Jugador>() {
+                @Override
+                public int compare(Jugador p1, Jugador p2) {
+                        // Aqui esta el truco, ahora comparamos p2 con p1 y no al reves como antes
+                        return new Integer(p2.getPts()).compareTo(new Integer(p1.getPts()));
+                }
+        });
+        }
 }
