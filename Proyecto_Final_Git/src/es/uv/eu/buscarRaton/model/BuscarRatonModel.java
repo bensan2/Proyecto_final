@@ -365,13 +365,10 @@ WARRING CAMBIAR  a como se diseñe al final
     public String MostrarJugadores(){
         
         String resultado="";
-        // Ya que no podemos utilizar arraylist de jugadores, tendremos 2 arraylist relacionados en posicion(i) con  jugadores y  pts
-        for (int i = 0; i < nombres_jugadores.size(); i++) {
-            resultado = resultado+ "\t"+ (i+1) +"\t"+ nombres_jugadores.get(i) + "\t" + pts_jugadores.get(i) + "\n";
-            System.out.println("toStringNOMBRE: " + nombres_jugadores.get(i) + "\t" +"PUNTOS: "+ pts_jugadores.get(i));
+        for (int i = 0; i < jugadores.size(); i++) {
+            resultado = resultado+ "\t"+ (i+1) +"\t"+ jugadores.get(i) + "\n";
+            System.out.println("toStringNOMBRE: " + jugadores.get(i) + "\n");
         }
-        
-        
         
         return resultado; 
     }
