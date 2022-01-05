@@ -4,7 +4,9 @@ import es.uv.eu.buscarRaton.model.BuscarRatonModel;
 import es.uv.eu.buscarRaton.model.Celdas;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionListener;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -65,8 +67,14 @@ public class PanelCentralTablero extends JPanel{
     // Selecciona una celda
     public void selectCelda(int fila, int columna, Celdas celdas, boolean asistente){
         if(celdas.isRaton()){
+            
+            // Redimensiona la imagen a mostrar al tamaño del boton
+            ImageIcon imagen = new ImageIcon(raton);
+            Icon imagen_raton = new ImageIcon(imagen.getImage().getScaledInstance(tablero[fila][columna].getWidth(), 
+                                                                                  tablero[fila][columna].getHeight(),
+                                                                                  Image.SCALE_DEFAULT));
             tablero[fila][columna].setBackground(color_fondo);
-            tablero[fila][columna].setIcon(new ImageIcon(raton));
+            tablero[fila][columna].setIcon(imagen_raton);
             tablero[fila][columna].setEnabled(false);
         }else{
             if(celdas.getPistas() == 0){

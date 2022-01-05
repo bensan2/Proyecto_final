@@ -293,7 +293,7 @@ WARRING CAMBIAR  a como se diseñe al final
     public String getRaton(){
         if (null != this.raton) switch (this.raton) {
             case "Raton1":
-                raton = "archivos/ratonRedim1.jpg";
+                raton = "archivos/Raton1.jpg";
                 break;
             case "Raton2":
                 raton = "archivos/Raton2.png";
