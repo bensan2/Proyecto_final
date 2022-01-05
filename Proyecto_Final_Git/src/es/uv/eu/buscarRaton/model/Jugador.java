@@ -15,8 +15,8 @@ public class Jugador {
         this.nombre = _nombre;
         this.pts = _pts;
     }
-
-
+    
+    
     /**
      * @return the nombre
      */
@@ -39,7 +39,7 @@ public class Jugador {
     }
 
     /**
-     * @param partidasGanadas the pts to set
+     * @param _pts the pts to set
      */
     public void setPts(int _pts) {
         this.pts = _pts;
@@ -51,7 +51,7 @@ public class Jugador {
      */
     @Override
     public String toString(){
-        return nombre+"\t"+pts+"\n";
+        return getNombre()+"\t"+getPts()+"\n";
     }
 }
 
