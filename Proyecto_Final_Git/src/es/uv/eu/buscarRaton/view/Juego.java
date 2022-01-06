@@ -3,7 +3,7 @@ package es.uv.eu.buscarRaton.view;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import es.uv.eu.buscarRaton.model.BuscarRatonModel;
-import es.uv.eu.buscarRaton.model.Celdas;
+import es.uv.eu.buscarRaton.model.Tablero;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -75,7 +75,7 @@ public class Juego extends JFrame{
     /**
      * Repaint de los elementos del juego
      */
-    public void repaintJuego(int pts, Celdas celdas, int fila, int columna, boolean asistente){
+    public void repaintJuego(int pts, Tablero celdas, int fila, int columna, boolean asistente){
         //panel_datos.setText(string_pulsado);
         panel_datos.setPuntosActuales(pts);
         panel_tablero.selectCelda(fila,columna,celdas, asistente);

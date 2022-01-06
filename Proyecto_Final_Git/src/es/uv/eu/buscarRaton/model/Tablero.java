@@ -5,13 +5,13 @@ package es.uv.eu.buscarRaton.model;
  * @author Benjamin Sanchez Monreal
  * @version 1.0 2021/12/09
  */
-public class Celdas {
+public class Tablero {
     private int filas;
     private int columnas;
     private boolean raton;
     private int pistas;
     
-    public Celdas(int filas, int columnas){
+    public Tablero(int filas, int columnas){
         this.filas = filas;
         this.columnas = columnas;
     }

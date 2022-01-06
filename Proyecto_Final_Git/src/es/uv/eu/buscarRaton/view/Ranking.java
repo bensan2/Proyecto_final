@@ -14,7 +14,6 @@ import javax.swing.JFrame;
  */
 public class Ranking extends JFrame{
     private ListaJugadoresRanking listaJugadores;
-    //private PanelNorteRanking baraSuperior;
     private PanelSurRanking botonesInferior;
     
     /**
@@ -41,7 +40,7 @@ public class Ranking extends JFrame{
         this.add(botonesInferior, BorderLayout.SOUTH);
         
         // Fija el tamaño de la ventana
-        setSize(420,280);
+        setSize(400,300);
         // Visualiza la ventana
         setVisible(true);
         // No puede cambiar de tamaño

@@ -1,7 +1,7 @@
 package es.uv.eu.buscarRaton.view;
 
 import es.uv.eu.buscarRaton.model.BuscarRatonModel;
-import es.uv.eu.buscarRaton.model.Celdas;
+import es.uv.eu.buscarRaton.model.Tablero;
 import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -42,7 +42,7 @@ public class PanelCentralTablero extends JPanel{
             
         dibujarBotones(filas, columnas);  
     }
-    // Creacion del tablero matriz de botones
+    // Creacion del Tablero matriz de botones
     private void dibujarBotones(int filas, int columnas){
         tablero = new JButton[filas][columnas];
         for(int x = 0; x < filas; x++){
@@ -65,7 +65,7 @@ public class PanelCentralTablero extends JPanel{
      */
     
     // Selecciona una celda
-    public void selectCelda(int fila, int columna, Celdas celdas, boolean asistente){
+    public void selectCelda(int fila, int columna, Tablero celdas, boolean asistente){
         if(celdas.isRaton()){
             
             // Redimensiona la imagen a mostrar al tamaño del boton

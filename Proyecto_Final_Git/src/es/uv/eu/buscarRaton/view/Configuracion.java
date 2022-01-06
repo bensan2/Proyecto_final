@@ -33,13 +33,15 @@ public class Configuracion extends JFrame {
         
     private JButton bColor_fondo,bColor_celda;
     private Color color_fondo, color_celda;
-    private Color color_inicial = Color.WHITE;
+    private Color color_inicial = Color.GREEN;
+    private Color color_inicial2 = Color.WHITE;
 
     private JComboBox raton;
-    private String[] ratones = {"Raton1", "Raton2", "Raton3"};
+    private String[] ratones = {"Mickey", "Rasca", "Jerry","Examinar..."};
     
     private JComboBox asistente;
     private String[] asistente_respuestas = {"No", "Si"};
+    
     
     JColorChooser ventanaDeColores;
     
@@ -83,10 +85,11 @@ public class Configuracion extends JFrame {
         asistente = new JComboBox(asistente_respuestas);
         this.add(asistente);
         
-                lRaton = new JLabel("Raton:", SwingConstants.CENTER);
+        lRaton = new JLabel("Raton:", SwingConstants.CENTER);
         this.add(lRaton);
         
         raton = new JComboBox(ratones);
+        raton.setActionCommand("ListaRatonExaminar");
         this.add(raton);          
         
         
@@ -106,8 +109,8 @@ public class Configuracion extends JFrame {
         
         bColor_fondo = new JButton("Pulse aqui");
         bColor_fondo.setActionCommand("ColorFondo");
-        color_fondo = color_inicial;
-        bColor_fondo.setBackground(color_inicial);
+        color_fondo = color_inicial2;
+        bColor_fondo.setBackground(color_inicial2);
         this.add(bColor_fondo);
 
         
@@ -244,5 +247,6 @@ public class Configuracion extends JFrame {
             bempezar.addActionListener(actionListener);
             bColor_celda.addActionListener(actionListener);
             bColor_fondo.addActionListener(actionListener);
+            raton.addActionListener(actionListener);
     }
 }

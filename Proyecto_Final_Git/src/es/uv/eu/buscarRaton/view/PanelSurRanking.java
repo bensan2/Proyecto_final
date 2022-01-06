@@ -22,7 +22,7 @@ public class PanelSurRanking extends JPanel {
         add(cerrar);
         
         juego_configurar = new JButton("Configurar Juego Nuevo");
-        juego_configurar.setActionCommand("ItemNueva_configuacion");
+        juego_configurar.setActionCommand("Nueva_configuacion_ranking");
         add(juego_configurar);
         
         juego_nuevo = new JButton("Juego Nuevo");
