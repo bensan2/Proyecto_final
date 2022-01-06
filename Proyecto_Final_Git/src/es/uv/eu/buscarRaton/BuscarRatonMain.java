@@ -1,4 +1,5 @@
 package es.uv.eu.buscarRaton;
+
 import es.uv.eu.buscarRaton.controller.BuscarRatonController;
 import es.uv.eu.buscarRaton.model.BuscarRatonModel;
 import es.uv.eu.buscarRaton.view.Configuracion;
@@ -14,7 +15,11 @@ import es.uv.eu.buscarRaton.view.ImagenInicial;
  *    Ya que nuestro codigo no acepta "&" utilizaremos el nombre de BuscarRaton
  * 
  * main
- 
+ * 
+ * GITHUB publico para acceso al profesor
+ * https://github.com/bensan2/Proyecto_final
+ * 
+ * 
  * @author Kevin Daniel Baguian Nsue
  * @author Benjamin Sanchez Monreal
  * @version 1.0 2021/12/09
