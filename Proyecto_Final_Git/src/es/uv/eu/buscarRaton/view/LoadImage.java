@@ -4,6 +4,11 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+/**
+ * Reutilizado de la practica 4
+ * @author Profesor
+ * @version 1.0 2021/12/09
+ */
 public class LoadImage extends JFileChooser {
     
     private static final String[] EXTENSIONES = { "jpg", "jpeg", "png", "gif",

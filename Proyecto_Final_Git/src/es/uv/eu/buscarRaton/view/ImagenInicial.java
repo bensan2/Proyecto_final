@@ -6,6 +6,13 @@ import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JWindow;
 
+
+/**
+ * @author Kevin Daniel Baguian Nsue
+ * @author Benjamin Sanchez Monreal
+ * @version 1.0 2021/12/09
+ */
+
 public class ImagenInicial extends JWindow{
 
     Image img = Toolkit.getDefaultToolkit().getImage("archivos/Juego.png");

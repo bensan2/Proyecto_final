@@ -27,8 +27,11 @@ public class MenuBar extends JMenuBar{
     private JMenuItem manual;
     private JMenuItem acercaDe;
     
+    /**
+     * Constructor JMenuBar
+     */
     public MenuBar(){
-        
+       
         // Crea el menu de configuracion
         configuracion = new JMenu("Configuracion");
         // Creamos los items dentro del menu configuracion y asignamos actioncommand

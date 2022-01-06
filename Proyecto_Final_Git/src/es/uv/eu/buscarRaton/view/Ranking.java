@@ -6,41 +6,60 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 /**
  * @author Kevin Daniel Baguian Nsue
  * @author Benjamin Sanchez Monreal
  * @version 1.0 2021/12/09
  */
 public class Ranking extends JFrame{
-    private ListaJugadoresRanking listaJugadores;
-    private PanelSurRanking botonesInferior;
     
+    // Panel cental Ranking
+    private ListaJugadoresRanking panel_Lista_Jugadores;
+
+    // Botones inferiores
+    private JPanel panel_sur;
+    private JButton cerrar,juego_configurar,juego_nuevo;
+        
     /**
      * Constructor de ranking 
      */
     public Ranking(BuscarRatonModel model){
         
-        super("Ranking"); 
+        super("Ranking - 10 mejores jugadores"); 
         
-        //Botones Inferior
-        botonesInferior = new PanelSurRanking();
-        listaJugadores = new ListaJugadoresRanking(model);
-        listaJugadores.mostrar();
+        // Panel central Ranking jugadores
+        panel_Lista_Jugadores = new ListaJugadoresRanking(model);
+        panel_Lista_Jugadores.mostrar();
         
-        //baraSuperior = new PanelNorteRanking();
+        // Panel inferior Botonera  
+        panel_sur = new JPanel();
+        
+        cerrar = new JButton("Cerrar");
+        cerrar.setActionCommand("Cerrar_Ranking");
+        panel_sur.add(cerrar);
+        
+        juego_configurar = new JButton("Configurar Juego Nuevo");
+        juego_configurar.setActionCommand("Nueva_configuacion_ranking");
+        panel_sur.add(juego_configurar);
+        
+        juego_nuevo = new JButton("Juego Nuevo");
+        juego_nuevo.setActionCommand("Resetear");
+        panel_sur.add(juego_nuevo);        
+        
+        //ANYADE TODOS LOS COMPONETES AL FRAME
+        this.add(panel_Lista_Jugadores,BorderLayout.CENTER);
+        this.add(panel_sur, BorderLayout.SOUTH);
+        
         // Icono del Jframe y minimizado
         Image img = Toolkit.getDefaultToolkit().getImage("archivos/Icono.png");
         ImageIcon imgicon = new ImageIcon(img);
+        
         this.setIconImage(img);
-        
-        //ANYADE TODOS LOS COMPONETES AL FRAME
-        //this.add(baraSuperior, BorderLayout.NORTH);
-        this.add(listaJugadores,BorderLayout.CENTER);
-        this.add(botonesInferior, BorderLayout.SOUTH);
-        
         // Fija el tamaño de la ventana
-        setSize(400,300);
+        setSize(400,250);
         // Visualiza la ventana
         setVisible(true);
         // No puede cambiar de tamaño
@@ -50,11 +69,12 @@ public class Ranking extends JFrame{
     }
 
     /**
-    *   ACTION LISTENERS
-     * @param actionListener
+    * ACTION LISTENERS
+    * @param actionListener
     */ 
-    public void setActionListener(ActionListener actionListener){
-        botonesInferior.setActionListener(actionListener);
-        
+    public void setActionListener(ActionListener actionListener){        
+        juego_nuevo.addActionListener(actionListener);
+        juego_configurar.addActionListener(actionListener);
+        cerrar.addActionListener(actionListener);      
     }
 }

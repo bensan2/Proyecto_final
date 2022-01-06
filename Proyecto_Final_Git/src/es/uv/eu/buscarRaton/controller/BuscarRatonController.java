@@ -121,9 +121,15 @@ public class BuscarRatonController {
                     String s = (String)identif.getSelectedItem();
                     // El usuario busca una imagen para el raton
                     if (s == "Examinar..."){
-                        LoadImage li = new LoadImage();
-                        model.loadImagen(li.getFile());
-                        model.saveImagen();
+                        try{
+                            LoadImage li = new LoadImage();
+                            model.loadImagen(li.getFile());
+                            model.saveImagen();
+                        } catch (Exception li){
+                            JOptionPane.showMessageDialog(null, 
+                            "NO SELECCIONO NUNGUN RATON:" + "\n" +
+                            " Se a añadido una imagen predefinida");
+                        }
                     }
                 break;  
                 

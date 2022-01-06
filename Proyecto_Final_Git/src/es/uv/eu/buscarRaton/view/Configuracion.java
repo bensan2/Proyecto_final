@@ -33,6 +33,7 @@ public class Configuracion extends JFrame {
         
     private JButton bColor_fondo,bColor_celda;
     private Color color_fondo, color_celda;
+    // Variables para inicializar la configuracion (juego rapido)
     private Color color_inicial = Color.GREEN;
     private Color color_inicial2 = Color.WHITE;
 
@@ -42,7 +43,7 @@ public class Configuracion extends JFrame {
     private JComboBox asistente;
     private String[] asistente_respuestas = {"No", "Si"};
    
-    JColorChooser ventanaDeColores;
+    JColorChooser ventana_colores;
     
     /**
      * Constructor de configuracion
@@ -135,7 +136,7 @@ public class Configuracion extends JFrame {
         // Cerrar con el boton x de la ventana
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-                // Centra la ventana en la pantalla
+        // Centra la ventana en la pantalla
         setLocation((Toolkit.getDefaultToolkit().getScreenSize().width  - 
                             getSize().width) / 2, 
                     (Toolkit.getDefaultToolkit().getScreenSize().height - 
@@ -205,7 +206,7 @@ public class Configuracion extends JFrame {
      * Asigna el color de la celda en configuracion
      */
     public void setColorCelda(){
-        color_celda = ventanaDeColores.showDialog(null, "Seleccione un Color", Color.GREEN);
+        color_celda = ventana_colores.showDialog(null, "Seleccione un Color", Color.GREEN);
         bColor_celda.setBackground(color_celda);
     }
     
@@ -213,7 +214,7 @@ public class Configuracion extends JFrame {
      * asigna el color de fondo en configuracion
      */
     public void setColorFondo(){
-        color_fondo = ventanaDeColores.showDialog(null, "Seleccione un Color", Color.GRAY);
+        color_fondo = ventana_colores.showDialog(null, "Seleccione un Color", Color.GRAY);
         bColor_fondo.setBackground(color_fondo);
     }
     

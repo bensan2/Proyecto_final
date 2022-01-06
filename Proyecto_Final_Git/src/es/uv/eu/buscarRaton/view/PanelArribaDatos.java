@@ -19,14 +19,14 @@ public class PanelArribaDatos extends JPanel{
     private JLabel lNombre,lPts,lAsistente;
     private JLabel lnombre_jugador,lpts_actuales;
     
-    private boolean asistente = new Boolean(true); // se saca del modelo,cambiarlo,es temporal
+    private boolean asistente;
     
     private JRadioButton rAsistente_si,rAsistente_no;
     private ButtonGroup gAsistente;
     private BuscarRatonModel model;
     
     /**
-     *
+     * Constructor del panel de datos (nombre, puntos y asistente)
      * @param model
      */
     public PanelArribaDatos(BuscarRatonModel model){
@@ -63,6 +63,10 @@ public class PanelArribaDatos extends JPanel{
     }
     
 
+    /**
+     * Asigna nombre al label del jugador
+     * @param _nombre_jugador 
+     */
     public void setNombreJugador(String _nombre_jugador){
         lnombre_jugador.setText(_nombre_jugador);
     }
@@ -75,25 +79,29 @@ public class PanelArribaDatos extends JPanel{
         lpts_actuales.setText(Integer.toString(_puntos_actuales));
     }
     
+    /**
+     * Asigna asistente activo o desactivado
+     * @param _asistente 
+     */
     public void setAsistente(Boolean _asistente){
         setAsistente((boolean) _asistente);
         rAsistente_si.setSelected(isAsistente());
         rAsistente_no.setSelected(!isAsistente());
     }
     
-    /**
-    *   ACTION LISTENERS
-     * @param actionListener
-    */ 
-    public void setActionListener(ActionListener actionListener){
-        rAsistente_si.addActionListener(actionListener);
-        rAsistente_no.addActionListener(actionListener);
-    }
-
-    /**
+     /**
      * @return the asistente
      */
     public boolean isAsistente() {
         return asistente;
+    }
+    
+    /**
+    *  ACTION LISTENERS
+    * @param actionListener
+    */ 
+    public void setActionListener(ActionListener actionListener){
+        rAsistente_si.addActionListener(actionListener);
+        rAsistente_no.addActionListener(actionListener);
     }
 }

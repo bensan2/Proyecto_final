@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import es.uv.eu.buscarRaton.model.BuscarRatonModel;
 import es.uv.eu.buscarRaton.model.Tablero;
-import java.awt.Color;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
@@ -24,8 +23,8 @@ public class Juego extends JFrame{
     private JButton salir;
 
     
-    /*
-    * Constructor
+    /**
+    * Constructor de la ventana principal del juego
     */
     public Juego(BuscarRatonModel model){
 
@@ -73,27 +72,30 @@ public class Juego extends JFrame{
     } 
     
     /**
-     * Repaint de los elementos del juego
+     * Actualiza la vista con los elementos del juego
+     * @param pts
+     * @param celdas
+     * @param fila
+     * @param columna
+     * @param asistente 
      */
     public void repaintJuego(int pts, Tablero celdas, int fila, int columna, boolean asistente){
-        //panel_datos.setText(string_pulsado);
         panel_datos.setPuntosActuales(pts);
-        panel_tablero.selectCelda(fila,columna,celdas, asistente);
+        panel_tablero.selectCelda(fila, columna, celdas, asistente);
     }
     
-    public void Reset(int pts, boolean asistente, Color color_celda,int filas, int columnas){
-        panel_datos.setPuntosActuales(pts);
-        panel_datos.setAsistente(asistente);
-        panel_tablero.ReiniciarBotones();
-    }
+
     
+    /**
+     * Desactiva los botones
+     */
     public void DesactivarTablero(){
         panel_tablero.DesactivarTablero();
     }
     
     /**
-    *   ACTION LISTENERS
-     * @param actionListener
+    * ACTION LISTENERS
+    * @param actionListener
     */ 
     public void setActionListener(ActionListener actionListener){
         menu_bar.setActionListener(actionListener);

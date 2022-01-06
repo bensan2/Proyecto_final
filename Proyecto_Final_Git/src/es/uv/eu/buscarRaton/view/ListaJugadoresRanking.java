@@ -5,7 +5,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 /**
@@ -16,8 +15,11 @@ import javax.swing.JTextArea;
 public class ListaJugadoresRanking extends JPanel {
     private BuscarRatonModel model;
     private JTextArea textArea;
-    private JScrollPane scroll;
     
+    /**
+     * Contructor Lista Jugadores
+     * @param model 
+     */
     public ListaJugadoresRanking( BuscarRatonModel model){
         
         this. model = model;
@@ -28,16 +30,18 @@ public class ListaJugadoresRanking extends JPanel {
         textArea.setBackground(Color.lightGray);
         textArea.setForeground(Color.black);
         textArea.setFont(new Font("Sans", Font.BOLD, 12));
-        scroll = new JScrollPane(textArea);
         
-        this.add(scroll, BorderLayout.CENTER);
+        this.add(textArea, BorderLayout.CENTER);
         this.setVisible(true);
         
         
     }
     
+    /**
+     * Muestra los 10 mejores jugadores
+     */
     public void mostrar(){
-        textArea.append("\t"+"Posicion" + "\t"+ "Jugador" + "\t"+"Puntos"+ "\n"+ 
+        textArea.append("\t"+"POSICION" + "\t"+ "JUGADOR" + "\t"+"PUNTOS"+ "\n"+ 
                         model.Mostrar10MejoresJugadores());
     }
     

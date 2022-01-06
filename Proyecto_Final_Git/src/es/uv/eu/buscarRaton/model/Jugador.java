@@ -1,6 +1,5 @@
 package es.uv.eu.buscarRaton.model;
 
-
 /**
  * @author Kevin Daniel Baguian Nsue
  * @author Benjamin Sanchez Monreal

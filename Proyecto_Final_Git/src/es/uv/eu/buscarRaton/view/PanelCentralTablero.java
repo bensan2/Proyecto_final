@@ -27,8 +27,7 @@ public class PanelCentralTablero extends JPanel{
     * Contructor panel con una matriz de botones juego "Buscar Raton"
     * @param model se necesita conocer las filas y columnas
     */
-    
-    public PanelCentralTablero(BuscarRatonModel model ){
+    public PanelCentralTablero(BuscarRatonModel model){
            
         filas = model.getFilas();
         columnas = model.getColumnas();
@@ -40,15 +39,20 @@ public class PanelCentralTablero extends JPanel{
             
         this.setLayout(new GridLayout(filas,columnas));
             
-        dibujarBotones(filas, columnas);  
+        DibujarTablero(filas, columnas);  
     }
-    // Creacion del Tablero matriz de botones
-    private void dibujarBotones(int filas, int columnas){
+    
+    /**
+     * Creacion del Tablero matriz de botones
+     * @param filas
+     * @param columnas 
+     */
+    private void DibujarTablero(int filas, int columnas){
         tablero = new JButton[filas][columnas];
         for(int x = 0; x < filas; x++){
             for (int y = 0; y < columnas; y++){
                 tablero[x][y] = new JButton();          
-                // Proporciona nombre al boton en este caso numerico
+                // Proporciona nombre id al boton
                 tablero[x][y].setName(x+","+y);
                 tablero[x][y].setBackground(color_celda);
                 tablero[x][y].setContentAreaFilled(false);
@@ -60,14 +64,16 @@ public class PanelCentralTablero extends JPanel{
         }   
     }
     
-    /**
-     * Cambia y desactiva el boton de la matriz 
+     /**
+     * Selecciona una celda del tablero
+     * @param fila
+     * @param columna
+     * @param celdas
+     * @param asistente 
      */
-    
-    // Selecciona una celda
     public void selectCelda(int fila, int columna, Tablero celdas, boolean asistente){
+        
         if(celdas.isRaton()){
-            
             // Redimensiona la imagen a mostrar al tamaño del boton
             ImageIcon imagen = new ImageIcon(raton);
             Icon imagen_raton = new ImageIcon(imagen.getImage().getScaledInstance(tablero[fila][columna].getWidth(), 
@@ -94,7 +100,10 @@ public class PanelCentralTablero extends JPanel{
         }
     }
 
-    public void ReiniciarBotones(){
+    /**
+     * Reinicia el estado de los botones como estaban al inicio de la partida
+     */
+    public void ReiniciarTablero(){
         for(int x = 0; x < filas; x++){
             for (int y = 0; y < columnas; y++){
                         // Cambia a color de color_celda, color sin pulsar
@@ -105,7 +114,9 @@ public class PanelCentralTablero extends JPanel{
              }
     }
     
-    
+    /**
+     * Desactiva el tablero
+     */
     public void DesactivarTablero(){
         for(int x = 0; x < filas; x++){
             for (int y = 0; y < columnas; y++){
@@ -113,10 +124,11 @@ public class PanelCentralTablero extends JPanel{
             }
         }
     }
-    
+
     /**
-    *   ACTION LISTENERS
-    */ 
+     * ACTION LISTENERS
+     * @param actionListener 
+     */
     public void setActionListener(ActionListener actionListener){
         for(int x = 0; x < filas; x++){
             for (int y = 0; y < columnas; y++){
