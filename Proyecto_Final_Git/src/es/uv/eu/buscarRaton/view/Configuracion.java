@@ -41,8 +41,7 @@ public class Configuracion extends JFrame {
     
     private JComboBox asistente;
     private String[] asistente_respuestas = {"No", "Si"};
-    
-    
+   
     JColorChooser ventanaDeColores;
     
     /**
@@ -60,7 +59,7 @@ public class Configuracion extends JFrame {
         txtJugador.setSize(25,40);
         txtJugador.setBounds(1,1,1,1);
         this.add(txtJugador);    
-        
+       
         
         lFilas = new JLabel("Filas:", SwingConstants.CENTER);
         this.add(lFilas);
@@ -103,7 +102,6 @@ public class Configuracion extends JFrame {
         this.add(bColor_celda);
 
         
-        
         lColor_fondo = new JLabel("Color de fondo:", SwingConstants.CENTER);
         this.add(lColor_fondo);
         
@@ -113,7 +111,6 @@ public class Configuracion extends JFrame {
         bColor_fondo.setBackground(color_inicial2);
         this.add(bColor_fondo);
 
-        
         
         bcerrar = new JButton("SALIR");
         bcerrar.setActionCommand("Salir");
@@ -145,35 +142,58 @@ public class Configuracion extends JFrame {
                             getSize().height) / 2);
     }
        
-    
     /**
-    * GET DE LAS FUNCIONES   
-    * @return 
+    * Devuelve nombre de usuario del JTextField   
+    * @return txtJugador.getText()
     */
     public String getNombre(){
         return txtJugador.getText();
     }
     
+    /**
+    * Devuelve raton elegido por el usuario   
+    * @return raton.getSelectedItem().toString()
+    */
     public String getRaton(){
         return raton.getSelectedItem().toString();
     }
     
+    /**
+    * Devuelve color de la celda asignada por el usuario
+    * @return color_celda
+    */
     public Color getColorCelda(){
         return color_celda;
     }
     
+    /**
+    * Devuelve color de fondo asignada por el usuario
+    * @return color_fondo
+    */
     public Color getColorFondo(){
         return color_fondo;
     }
     
+    /**
+    * Devuelve el numero del JTextField filas
+    * @return Integer.parseInt(txtFilas.getText())
+    */ 
      public int getFilas(){
         return Integer.parseInt(txtFilas.getText());
     }
     
+    /**
+    * Devuelve el numero del JTextField columnas
+    * @return Integer.parseInt(txtColumnas.getText())
+    */ 
     public int getColumnas(){
         return Integer.parseInt(txtColumnas.getText());
     }
     
+    /**
+    * Devuelve la cadena con la opcion elegida del combobox
+    * @return aux_asistente
+    */ 
     public boolean getAsistente(){
         boolean aux_asistente;
         aux_asistente = "Si".equals(asistente.getSelectedItem().toString());
@@ -181,12 +201,17 @@ public class Configuracion extends JFrame {
     }
     
     
-    
+    /**
+     * Asigna el color de la celda en configuracion
+     */
     public void setColorCelda(){
         color_celda = ventanaDeColores.showDialog(null, "Seleccione un Color", Color.GREEN);
         bColor_celda.setBackground(color_celda);
     }
     
+    /**
+     * asigna el color de fondo en configuracion
+     */
     public void setColorFondo(){
         color_fondo = ventanaDeColores.showDialog(null, "Seleccione un Color", Color.GRAY);
         bColor_fondo.setBackground(color_fondo);
@@ -239,7 +264,7 @@ public class Configuracion extends JFrame {
             
     
     /**
-    *  ACTION LISTENERS
+    *  ACTION LISTENERS de configuracion
     * @param actionListener
     */ 
     public void setActionListener(ActionListener actionListener){

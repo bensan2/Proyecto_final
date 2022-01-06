@@ -18,7 +18,7 @@ public class Jugador {
     
     
     /**
-     * @return the nombre
+     * @return nombre
      */
     public String getNombre() {
         return this.nombre;
@@ -32,7 +32,7 @@ public class Jugador {
     }
 
     /**
-     * @return the pts
+     * @return pts
      */
     public int getPts() {
         return pts;
@@ -46,12 +46,12 @@ public class Jugador {
     }
 
     /**
-     *
-     * @return
+     * Metodo sobreescrito para mostrar al jugador con Nombre   Pts
+     * @return getNombre()+ "\t" + getPts()+"\n"
      */
     @Override
     public String toString(){
-        return getNombre()+"\t"+getPts()+"\n";
+        return getNombre()+ "\t" + getPts() + "\n";
     }
 }
 

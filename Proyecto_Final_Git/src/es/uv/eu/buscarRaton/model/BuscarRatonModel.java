@@ -78,6 +78,190 @@ public class BuscarRatonModel {
     
     
     /**
+     * Asigna un nomnre al jugador
+     * @param _nombre_jugador 
+     */
+    public void setNombreJugador(String _nombre_jugador){
+        nombre_jugador = _nombre_jugador;
+    }
+    
+    /**
+     * Devuelve el nombre del jugador
+     * @return 
+     */
+    public String getNombreJugador(){
+        return nombre_jugador;
+    }
+    
+    /**
+     * Asigna un raton
+     * @param _raton 
+     */
+    public void setRaton(String _raton){
+        raton = _raton;
+    }
+    
+    /**
+     * Devuelve un String con la localiacion de la imagen del raton
+     * @return raton
+     */
+    public String getRaton(){
+        if (null != this.raton) switch (this.raton) {
+            case "Mickey":
+                raton = "archivos/Raton1.jpg";
+                break;
+            case "Rasca":
+                raton = "archivos/Raton2.png";
+                break;
+            case "Jerry":
+                raton = "archivos/Raton3.png";
+                break;
+            case "Examinar...":
+                raton = "archivos/Raton4.jpg";
+                break;       
+            default:
+                break;
+        }
+        return raton;
+    }
+    
+    /**
+     * Asigna color actual de la celda
+     * @param _color_celda 
+     */
+    public void setColorCelda(Color _color_celda){
+        color_celda = _color_celda;
+    }
+    
+    /**
+     * Devuelve el color actual de la celda
+     * @return color_celda
+     */
+    public Color getColorCelda(){
+        return color_celda;
+    }
+    
+    /**
+     * Asigna el color de fondo del fondo
+     * @param _color_fondo 
+     */
+    public void setColorFondo(Color _color_fondo){
+        color_fondo = _color_fondo;
+    }
+    
+    /**
+     * Devuelve el color actual del fono
+     * @return color_fondo
+     */
+    public Color getColorFondo(){
+        return color_fondo;
+    }
+    
+    /**
+     * Asigna asistente 
+     * @param _asistente 
+     */
+    public void setAsistente(boolean _asistente){
+        asistente = _asistente;
+    }
+    
+    /**
+     * Devuelve si esta o no activado el asistente
+     * @return 
+     */
+    public boolean getAsistente(){
+        return asistente;
+    }
+    
+    /**
+     * Asigna las filas del tablero
+     * @param filas 
+     */
+    public void setFilas(int filas){
+        this.filas = filas;
+    }
+    
+     /**
+     * Devuelve las filas actuales del tablero 
+     * @return filas
+     */
+    public int getFilas(){
+        return filas;
+    }
+    
+    /**
+     * Asigna las columnas del tablero
+     * @param columnas 
+     */
+    public void setColumnas (int columnas){
+        this.columnas = columnas ;
+    }
+    
+     /**
+     * Devuelve las columnas actuales del tablero
+     * @return columnas
+     */
+    public int getColumnas(){
+        return columnas;
+    }
+  
+    
+    /**
+     * Devuelve los puntos actuales del tablero
+     * @return puntos
+     */
+    public int getPuntos(){
+        return puntos;
+    }
+    
+        /**
+     * Get devuelve el tablero
+     * @return 
+     */
+    public Tablero[][] getTablero() {
+        return tablero;
+    }
+
+    /**
+     * Asigna un tablero
+     * @param tablero 
+     */
+    public void setTablero(Tablero[][] tablero) {
+        this.tablero = tablero;
+    }
+    
+        /**
+     * Esta el raton en esa celca, boolean
+     * @return celda_raton
+     */
+    public boolean isCeldas_raton() {
+        return celda_raton;
+    }
+
+    /**
+     * @param celdas_raton the celda_raton to set
+     */
+    public void setCeldas_raton(boolean celdas_raton) {
+        this.celda_raton = celdas_raton;
+    }
+
+    /**
+     * Asigna un ArrayList completo de jugadores
+     * @param jugadores 
+     */
+    public void setJugadores(ArrayList<Jugador> jugadores) {
+        this.jugadores = jugadores;
+    }
+    
+     /**
+     * Devuelve el ArrayList de todos los jugadores 
+     * @return jugadores
+     */
+    public ArrayList<Jugador> getJugadores() {
+        return jugadores;
+    }
+    
+    /**
      * Descuenta los puntos actuales confome a cada jugada dependiendo si esta
      * la ayuda del asistente activo (-2 pts) o desactivado (-1pts)
      */
@@ -176,28 +360,6 @@ public class BuscarRatonModel {
         return listaCeldas;
     }
     
-    
-    /**
-     * Guarda la partida del arraylist de jugador actual en un archivo historico.txt
-     */
-    public void GuardarPartida(){
-
-                // Grabar a Fichero
-        	String linea = getNombreJugador()+"|"+getPuntos();
-		File fichero = new File("archivos\\historico.txt");
-                
-		try {
-                        // Crea el Archivo si no existe.
-                        PrintWriter salida = new PrintWriter(new FileWriter(fichero, true));
-                        salida.println(linea);
-			salida.close();
-                        System.out.println("Fichero Generado");
-                        
-		} catch (IOException ex) {
-			System.out.println("No puedo guardar: " + ex.getMessage());
-		}
-    }
-    
      /**
      * Lee la partida en un archivo historico.txt y las pasa a un ArrayList de jugadores
      */
@@ -224,86 +386,27 @@ public class BuscarRatonModel {
             System.out.println("No puedo guardar: " + ex.getMessage());
 	}
     }
+    
+    /**
+     * Guarda la partida del arraylist de jugador actual en un archivo historico.txt
+     */
+    public void GuardarPartida(){
 
-    /**
-     * Esta el raton en esa celca, boolean
-     * @return celda_raton
-     */
-    public boolean isCeldas_raton() {
-        return celda_raton;
+                // Grabar a Fichero
+        	String linea = getNombreJugador()+"|"+getPuntos();
+		File fichero = new File("archivos\\historico.txt");
+                
+		try {
+                        // Crea el Archivo si no existe.
+                        PrintWriter salida = new PrintWriter(new FileWriter(fichero, true));
+                        salida.println(linea);
+			salida.close();
+                        System.out.println("Fichero Generado");
+                        
+		} catch (IOException ex) {
+			System.out.println("No puedo guardar: " + ex.getMessage());
+		}
     }
-
-    /**
-     * @param celdas_raton the celda_raton to set
-     */
-    public void setCeldas_raton(boolean celdas_raton) {
-        this.celda_raton = celdas_raton;
-    }
-
-    /**
-     * Get devuelve el tablero
-     * @return 
-     */
-    public Tablero[][] getTablero() {
-        return tablero;
-    }
-
-    /**
-     * Asigna un tablero
-     * @param tablero 
-     */
-    public void setTablero(Tablero[][] tablero) {
-        this.tablero = tablero;
-    }
-    
-    /**
-     * Asigna un nomnre al jugador
-     * @param _nombre_jugador 
-     */
-    public void setNombreJugador(String _nombre_jugador){
-        nombre_jugador = _nombre_jugador;
-    }
-    
-    /**
-     * Devuelve el nombre del jugador
-     * @return 
-     */
-    public String getNombreJugador(){
-        return nombre_jugador;
-    }
-    
-    /**
-     * Asigna un raton
-     * @param _raton 
-     */
-    public void setRaton(String _raton){
-        raton = _raton;
-    }
-    
-    /**
-     * Devuelve un String con la localiacion de la imagen del raton
-     * @return raton
-     */
-    public String getRaton(){
-        if (null != this.raton) switch (this.raton) {
-            case "Mickey":
-                raton = "archivos/Raton1.jpg";
-                break;
-            case "Rasca":
-                raton = "archivos/Raton2.png";
-                break;
-            case "Jerry":
-                raton = "archivos/Raton3.png";
-                break;
-            case "Examinar...":
-                raton = "archivos/Raton4.jpg";
-                break;       
-            default:
-                break;
-        }
-        return raton;
-    }
-    
             
     /**
      * Carga en el sistema una imagen obtenida por el usuario en una direccion
@@ -341,110 +444,6 @@ public class BuscarRatonModel {
                 System.out.println("Motivo: " + e.getLocalizedMessage());
             }
         }
-    }
-  
-    /**
-     * Asigna color actual de la celda
-     * @param _color_celda 
-     */
-    public void setColorCelda(Color _color_celda){
-        color_celda = _color_celda;
-    }
-    
-    /**
-     * Devuelve el color actual de la celda
-     * @return color_celda
-     */
-    public Color getColorCelda(){
-        return color_celda;
-    }
-    
-    /**
-     * Asigna el color de fondo del fondo
-     * @param _color_fondo 
-     */
-    public void setColorFondo(Color _color_fondo){
-        color_fondo = _color_fondo;
-    }
-    
-    /**
-     * Devuelve el color actual del fono
-     * @return color_fondo
-     */
-    public Color getColorFondo(){
-        return color_fondo;
-    }
-    
-    /**
-     * Asigna asistente 
-     * @param _asistente 
-     */
-    public void setAsistente(boolean _asistente){
-        asistente = _asistente;
-    }
-    
-    /**
-     * Asigna las filas del tablero
-     * @param filas 
-     */
-    public void setFilas(int filas){
-        this.filas = filas;
-    }
-    
-    /**
-     * Asigna las columnas del tablero
-     * @param columnas 
-     */
-    public void setColumnas (int columnas){
-        this.columnas = columnas ;
-    }
-    
-    /**
-     * Devuelve si esta o no activado el asistente
-     * @return 
-     */
-    public boolean getAsistente(){
-        return asistente;
-    }
-  
-    /**
-     * Devuelve las filas actuales del tablero 
-     * @return filas
-     */
-    public int getFilas(){
-        return filas;
-    }
-    
-    /**
-     * Devuelve las columnas actuales del tablero
-     * @return columnas
-     */
-    public int getColumnas(){
-        return columnas;
-    }
-    
-    /**
-     * Devuelve los puntos actuales del tablero
-     * @return puntos
-     */
-    public int getPuntos(){
-        return puntos;
-    }
-
-    /**
-     * Devuelve el ArrayList de todos los jugadores 
-     * @return jugadores
-     */
-    public ArrayList<Jugador> getJugadores() {
-        return jugadores;
-    }
-
-    /**
-     * Asigna un ArrayList completo de jugadores
-     * @param jugadores 
-     */
-    public void setJugadores(ArrayList<Jugador> jugadores) {
-        this.jugadores = jugadores;
     }
     
     /**
